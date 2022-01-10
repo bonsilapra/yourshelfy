@@ -1,0 +1,13 @@
+.page-container {
+    margin-bottom: -10px;
+    padding-bottom: 1rem;
+    padding-top: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    object-fit: contain;
+    background-color: #E0FFF5;
+    color: #24010C;
+}
