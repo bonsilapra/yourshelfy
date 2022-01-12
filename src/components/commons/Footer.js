@@ -9,7 +9,7 @@ function Footer() {
         <div className='footer-container'>
             <div className='footer-links'>
                 <div className='footer-link-wrapper'>
-                    <h1>YourShelfy</h1>
+                    <h3><Link to='/'>YourShelfy</Link></h3>
                 </div>
             </div>
             <small className='website-rights'>Copyright© {new Date().getFullYear()} - All Rigths reserved</small>

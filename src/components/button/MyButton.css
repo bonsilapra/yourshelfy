@@ -1,0 +1,97 @@
+
+  
+  .btn {
+    padding: 5px 20px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .btn--primary {
+    background-color: #E0FFF5;
+    color: #009463;
+    border: 3px solid #E0FFF5;
+  }
+
+  .btn--primary-rev {
+    background-color: #009463;
+    color: #E0FFF5;
+    border: 3px solid #009463;
+  }
+  
+  .btn--outline {
+    background-color: #009463;
+    color:#E0FFF5;
+    padding: 5px 20px;
+    border: 3px solid #E0FFF5;
+    transition: all 0.5s ease-out;
+  }
+
+  .btn--dark {
+    background-color: #2E403A;
+    color: #CFE8E0;
+    border: 3px solid #2E403A;
+  }
+
+  .btn--dark-rev {
+    background-color:#CFE8E0;
+    color: #2E403A;
+  }
+  
+  
+  .btn--small {
+    padding: 0px 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin:10px;
+  }
+
+  .btn--medium {
+    padding: 5px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 5px;
+  }
+  
+  .btn--large {
+    padding: 10px 24px;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 5px;
+  }
+
+  .btn--large-icon {
+    padding: 0 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .btn--small-icon {
+    padding: 0px 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin:0px;
+  }
+  
+  .btn--primary:hover,
+  .btn--outline:hover {
+    transition: all 0.5s ease-out;
+    background: #E0FFF5;
+    color: #24010C;
+    text-shadow: 0 0 10px #009463;
+  }
+  
+  .btn--dark:hover {
+    transition: all 0.5s ease-out;
+    color: #24010C;
+    text-shadow: 0 0 8px #CFE8E0;
+  }
+
+  .btn--dark-rev:hover {
+    transition: all 0.5s ease-out;
+    color: #24010C;
+    text-shadow: 0 0 8px #009463;
+  }

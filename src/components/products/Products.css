@@ -1,0 +1,29 @@
+.products-container {
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #CFE8E0;
+    border: 3px solid #2E403A;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+.product-category {
+    justify-content: center;
+    padding: 5px;
+    background-color: #2E403A;
+    text-align: center;
+    font-size: larger;
+    color: #CFE8E0;
+}
+
+.category-items {
+
+}
+
+@media screen and (max-width: 1010px) {
+    .products-container {
+        width: 100%;
+        border-radius: 0;
+    }
+}

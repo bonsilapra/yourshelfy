@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+.navbar {
+    padding-left: 10px;
+    position: fixed; 
+    height: 60px;
+    z-index: 1;
+    opacity: 95%;
+    line-height: 100%;
+    text-align: center;
+    background-color: #009463 !important;
+    min-width: 100%;
+    padding: 10px 0 10px 0;
+}
+
+.navbar-logo {
+    color: #E0FFF5 !important;
+    font-family: 'Lobster', cursive ;
+    font-weight: 400;
+    justify-self: start;
+    margin-left: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    }
+
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    height: 80px;
+    max-width: 1500px;
+}
+
+.navbar-logo:hover {
+    color: #24010C !important;
+    transition: 0.5s ease-in-out;
+}
+
+.nav-links {
+    font-family: 'Lobster', cursive ;
+    font-weight: 400;
+    text-align: center;
+    margin-right: 20px;
+    font-size: 1.5rem;
+
+}
+
+.navbar-light .navbar-nav .nav-link  {
+    color: #E0FFF5 ; ;
+}
+
+.navbar-light:hover .navbar-nav:hover .nav-link:hover {
+    color: #24010C;
+    transition: 0.5s ease-in-out;
+}
+
+.nav-links-mobile {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+}
+
+
+
+@media screen and (max-width: 1010px) {
+    .NavbarItems {
+        position: relative;
+    }
+
+    .nav-menu {
+        display: block;
+        flex-direction: column;
+        width: 100%;
+        height: 70vh;
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        transition: all 0.5s ease;
+    }
+
+    .nav-menu.active {
+        display: block;
+        flex-direction: column;
+        align-items: center;
+        background: #009463;
+        left: 0;
+        transition: all 0.5s ease;
+        z-index: 1;
+        font-size: larger;
+    }
+
+    .menu-icon {
+        color: #E0FFF5 ;
+        display: block;
+        margin-left: auto;
+        padding-right: 10px;
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .menu-icon:hover {
+        color: #24010C;
+        transition: 0.3s ease-out;
+    }
+
+    .navbar-light:hover .navbar-nav:hover .nav-link:hover {
+        background-color: #E0FFF5;
+        transition: 0.3s ease-out;
+    }
+
+    .nav-links {
+        text-align: center;
+        padding: 1.5rem;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-links-mobile {
+        display: block;
+        text-align: center;
+        margin: 1rem auto;
+        width: 80%;
+        background-color: transparent;
+    }
+        
+}

@@ -1,0 +1,125 @@
+.shelves-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 95vw;
+    margin: 0 auto;
+    justify-content: center;
+    color: #24010C
+}
+
+.shelf-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    min-height: 150px;
+    margin: 0.7rem;
+    border: 3px solid #2E403A;
+    background-color: #CFE8E0;
+    border-radius: 5px;
+}
+
+.shelf-name {
+    justify-content: center;
+    padding: 5px;
+    background-color: #2E403A;
+    text-align: center;
+    font-size: larger;
+}
+
+.shelf-name a {
+    text-decoration: none;
+    color: #CFE8E0;
+}
+
+.shelf-name a:hover {
+    color: #24010C;
+    transition: 0.5s ease-in-out;
+}
+
+.shelf-items {
+    justify-content: left;
+    padding: 8px;
+    text-align: left;
+}
+
+.shelf-items ul {
+    list-style-type: number;
+
+}
+
+
+/* Shelf  */
+
+.shelf-head {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.shelf-head h1{
+    margin-bottom: 0;
+}
+
+.shelf {
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #CFE8E0;
+    border: 3px solid #2E403A;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0 15px 0;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.item h4 {
+    margin: 0 0 0 0;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    align-items: center;
+}
+
+.options p {
+    margin: 0;
+    padding: 8px;
+}
+
+
+
+@media screen and (max-width: 1010px) {
+    .shelf {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .product {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0 10px 0;
+    }
+
+    .item {
+        justify-content: center;
+        flex-direction: row-reverse;
+    }
+
+    .options {
+        justify-content: center;
+        margin: 0;
+    }
+}

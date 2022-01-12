@@ -1,7 +1,7 @@
 .page-container {
-    margin-bottom: -10px;
-    padding-bottom: 1rem;
-    padding-top: 100px;
+    min-height: calc(100vh - 60px);
+    padding-bottom: 0.5rem;
+    padding-top: 80px;
     width: 100%;
     display: flex;
     flex-direction: column;

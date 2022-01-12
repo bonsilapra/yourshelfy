@@ -4,9 +4,4 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.page-container {
-  min-height: calc(100vh - 206px);
-  display: flex;
-  flex-direction: column;
-}
 

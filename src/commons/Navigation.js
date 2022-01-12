@@ -1,1 +1,0 @@
-// moje szafki, moje produkty, lista zakupow, o aplikacji

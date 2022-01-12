@@ -1,23 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {
   BrowserRouter,
   Routes,
   Route } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert'
-import './index.css'
-import { MainPage } from './mainPage/MainPage'
-import store from './app/store'
-import { Provider } from 'react-redux'
-import Footer from './commons/Footer';
+import './index.css';
+import "bootstrap/dist/css/bootstrap.css";
+import { MainPage } from './components/mainPage/MainPage';
+import { Shelf } from './components/mainPage/Shelf';
+import { Products } from './components/products/Products';
+import store from './app/store';
+import { Provider } from 'react-redux';
+import Footer from './components/commons/Footer';
+import Navigation from './components/commons/Navigation';
+
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-    <div className='page-container'>
+      <Navigation />
       <Routes>
         <Route path="" element={<MainPage />} />
-        <Route path="trips" element={<MainPage />} />
+        <Route path="shelf/:id" element={<Shelf />} />
+        <Route path="products" element={<Products />} />
+
         {/* <Route path="trip/:id" element={<Trip />} /> 
         <Route path="peaks" element={<Peaks />} /> 
         <Route path="about" element={<About />} /> */}
@@ -32,7 +39,6 @@ ReactDOM.render(
           }
         />
       </Routes>
-      </div>
     <Footer />
     </BrowserRouter>
   </Provider>,
