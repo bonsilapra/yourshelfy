@@ -9,6 +9,8 @@ export const MyButton = ({
   children,
   type,
   onClick,
+  style,
+  title,
   buttonStyle,
   buttonSize,
   p
@@ -24,6 +26,8 @@ export const MyButton = ({
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}
         type={type}
+        style={style}
+        title={title}
       >
         {children}
       </button>

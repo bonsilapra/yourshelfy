@@ -9,7 +9,9 @@ import './index.css';
 import "bootstrap/dist/css/bootstrap.css";
 import { MainPage } from './components/mainPage/MainPage';
 import { Shelf } from './components/mainPage/Shelf';
+import { ShoppingList } from './components/shoppingList/ShoppingList';
 import { Products } from './components/products/Products';
+import { About } from './components/about/About';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import Footer from './components/commons/Footer';
@@ -24,10 +26,9 @@ ReactDOM.render(
         <Route path="" element={<MainPage />} />
         <Route path="shelf/:id" element={<Shelf />} />
         <Route path="products" element={<Products />} />
-
-        {/* <Route path="trip/:id" element={<Trip />} /> 
-        <Route path="peaks" element={<Peaks />} /> 
-        <Route path="about" element={<About />} /> */}
+        <Route path="products" element={<Products />} />
+        <Route path="shoppingList" element={<ShoppingList />} />
+        <Route path="about" element={<About />} />
         <Route
           path="*"
           element={

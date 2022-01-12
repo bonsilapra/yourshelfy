@@ -59,7 +59,7 @@ function Navigation() {
                     <Nav className={click ? 'nav-menu active' : 'nav-menu'}>
                         <Nav.Link as={Link} to="/products" onClick={closeMobileMenu}
                         className='nav-links'>Products <i style= {{"paddingLeft":"5px"}} className="fas fa-boxes" /></Nav.Link>
-                        <Nav.Link as={Link} to="/Peaks" onClick={closeMobileMenu}
+                        <Nav.Link as={Link} to="/shoppingList" onClick={closeMobileMenu}
                         className='nav-links'>Shopping list <i style= {{"paddingLeft":"5px"}} className="fas fa-shopping-basket" /></Nav.Link>
                         <Nav.Link as={Link} to="/about" onClick={closeMobileMenu}
                         className='nav-links'>About<i style= {{"paddingLeft":"5px"}} className="fas fa-info-circle" /></Nav.Link>
@@ -102,6 +102,9 @@ function Navigation() {
                         onClick={logout}>
                             LOG OUT</MyButton>)}
                     </Nav>
+                    {/* <Nav>
+                        <i style= {{"paddingRight":"30px"}} className="fas fa-shopping-basket" /> 
+                    </Nav> */}
                     <Nav className= "menu-icon" style={{marginLeft: "auto", paddingRight: "10px"}} onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </Nav>

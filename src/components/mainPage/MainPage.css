@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     align-items: center;
     width: 95vw;
-    margin: 0 auto;
     justify-content: center;
     color: #24010C
 }
@@ -39,12 +38,20 @@
 
 .shelf-items {
     justify-content: left;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
+    color: #24010C;
 }
 
 .shelf-items ul {
     list-style-type: number;
+    margin: 0;
+    padding: 0;
+}
+
+.shelf-items li {
+    display: flex;
+    flex-direction: row;
 
 }
 
@@ -81,6 +88,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-items: center;
 }
 
 .item h4 {
@@ -105,6 +113,8 @@
     .shelf {
         width: 100%;
         border-radius: 0;
+        border-right: none;
+        border-left: none;
     }
 
     .product {

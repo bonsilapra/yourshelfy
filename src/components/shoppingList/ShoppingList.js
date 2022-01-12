@@ -4,25 +4,15 @@ import { useParams } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
-import './MainPage.css';
-import '../shoppingList/ShoppingList.css';
+import './ShoppingList.css';
 
 
-export function Shelf() {
-
+export function ShoppingList() {
 
 
     return (
         <div className="page-container">
-            <div className='shelf-head'>
-                <h1>Szafka</h1>
-                <MyButton 
-                    buttonStyle='btn--primary'
-                    buttonSize='btn--large-icon'
-                    title="Edit name">
-                    <i class="fas fa-edit"></i>
-                </MyButton>
-            </div>
+            <h1>MY SHOPPING LIST</h1>
             <div className='shop-container'>                     
                 <div className='product-category'>
                     Kategoria 1
@@ -85,12 +75,12 @@ export function Shelf() {
                     Add product <i class="fas fa-plus-circle"></i>
                 </MyButton>
             </div>
+            
             <MyButton 
             buttonStyle='btn--primary'
             buttonSize='btn--large'>
                 Add category <i class="fas fa-plus-circle"></i>
             </MyButton>
-        </div>
-            
+        </div>   
     )
 }

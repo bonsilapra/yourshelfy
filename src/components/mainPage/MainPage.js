@@ -20,7 +20,6 @@ export class MainPage extends React.Component {
                     <ShelfTemplate name="szafka2" id="2"/>   
                     <ShelfTemplate name="szafka3" id="3"/>      
                     <ShelfTemplate name="szafka4" id="4"/>                       
-
                 </div>
             </div>
 

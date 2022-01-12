@@ -46,11 +46,15 @@
     text-align: center;
     margin-right: 20px;
     font-size: 1.5rem;
-
 }
 
 .navbar-light .navbar-nav .nav-link  {
     color: #E0FFF5 ; ;
+}
+
+.navbar-light:hover .navbar-nav:hover .nav-link:hover {
+    color: #24010C;
+    transition: 0.5s ease-in-out;
 }
 
 .navbar-light:hover .navbar-nav:hover .nav-link:hover {
@@ -80,7 +84,7 @@
         height: 70vh;
         position: absolute;
         top: 60px;
-        left: -100%;
+        left: -110%;
         transition: all 0.5s ease;
     }
 
@@ -108,6 +112,8 @@
         color: #24010C;
         transition: 0.3s ease-out;
     }
+
+
 
     .navbar-light:hover .navbar-nav:hover .nav-link:hover {
         background-color: #E0FFF5;

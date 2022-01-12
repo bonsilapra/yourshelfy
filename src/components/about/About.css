@@ -1,0 +1,25 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: justify;
+    align-items: center;
+    width: 70vw;
+    padding: 1rem;
+    border: 3px solid #2E403A;
+    background-color: #CFE8E0;
+    border-radius: 5px;
+}
+
+.about-container p {
+    margin: 0;
+}
+
+@media screen and (max-width: 1010px) {
+    .about-container {
+        width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+}
