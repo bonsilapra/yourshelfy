@@ -74,7 +74,6 @@
 
     .item {
         justify-content: center;
-        flex-direction: row-reverse;
     }
 
     .options {

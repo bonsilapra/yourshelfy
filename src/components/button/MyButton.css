@@ -40,6 +40,10 @@
     color: #2E403A;
   }
   
+  .btn--light-rev {
+    background-color:#E0FFF5;
+    color: #009463;
+  }
   
   .btn--small {
     padding: 0px 10px;

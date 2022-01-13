@@ -3,18 +3,14 @@ import { useParams } from "react-router-dom"
 // import myAxios from '../../utilities/myAxios';
 import { Link } from 'react-router-dom'
 import '../commons/Commons.css';
-import { MyButton } from './../button/MyButton.js';
+import { MyButton } from '../button/MyButton.js';
 import Select from 'react-select';
 import './MainPage.css';
 import '../shoppingList/ShoppingList.css';
 
 
-export function Shelf() {
+export function NOShelf() {
 
-    const [editShelfName, setEditShelfName]=useState(false);
-    const openEditShelfName = () => setEditShelfName(true);
-    const saveShelfName = () => setEditShelfName(false);
-    const cancelShelfName = () => setEditShelfName(false);
 
     const [editCategory, setEditCatName]=useState(false);
     const openEditCatName = () => setEditCatName(true);
@@ -42,42 +38,10 @@ export function Shelf() {
     const cancelNewCatName = () => setAddCatName(false);
 
 
-
-
     return (
         <div className="page-container">
             <div className='shelf-head'>
-                {editShelfName==false ?
-                (<>
-                    <h1>Szafka</h1>
-                    <MyButton 
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large-icon'
-                        title="Edit name"
-                        onClick={openEditShelfName}>
-                        <i class="fas fa-edit"></i>
-                    </MyButton>
-                </>):
-                (<>
-                    <input type="text" style={{height:"2.9rem"}}/>
-                    <MyButton 
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large-icon'
-                        style={{marginLeft:"5px"}}
-                        onClick={saveShelfName}
-                        title="Save">
-                        <i class="fas fa-check"></i>
-                    </MyButton>
-                    <MyButton 
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large-icon'
-                        style={{marginLeft:"5px"}}
-                        onClick={cancelShelfName}
-                        title="Cancel">
-                        <i class="fas fa-times"></i>
-                    </MyButton>
-                </>)
-                }
+                <h1>NO SHELF</h1>
             </div>
             <div className='shop-container'>                     
                 <div className='product-category'>

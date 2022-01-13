@@ -10,11 +10,22 @@
 .shelf-container {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 400px;
     min-height: 150px;
     margin: 0.7rem;
     border: 3px solid #2E403A;
     background-color: #CFE8E0;
+    border-radius: 5px;
+}
+
+.no-shelf-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    min-height: 150px;
+    margin: 0.7rem;
+    border: 3px solid #009463;
+    background-color: #E0FFF5;
     border-radius: 5px;
 }
 
@@ -26,12 +37,27 @@
     font-size: larger;
 }
 
+.no-shelf-name {
+    justify-content: center;
+    padding: 5px;
+    background-color: #009463;
+    text-align: center;
+}
+
 .shelf-name a {
     text-decoration: none;
     color: #CFE8E0;
+    font-size: larger;
 }
 
-.shelf-name a:hover {
+.no-shelf-name a {
+    text-decoration: none;
+    color: #E0FFF5;
+    font-size: larger;
+}
+
+.shelf-name a:hover,
+.no-shelf-name a:hover {
     color: #24010C;
     transition: 0.5s ease-in-out;
 }
@@ -41,6 +67,11 @@
     padding: 10px;
     text-align: left;
     color: #24010C;
+    font-size: large;
+}
+
+.shelf-items-name {
+    display: inline-block;
 }
 
 .shelf-items ul {
@@ -52,7 +83,6 @@
 .shelf-items li {
     display: flex;
     flex-direction: row;
-
 }
 
 
@@ -66,70 +96,4 @@
 
 .shelf-head h1{
     margin-bottom: 0;
-}
-
-.shelf {
-    width: 70vw;
-    display: flex;
-    flex-direction: column;
-    background-color: #CFE8E0;
-    border: 3px solid #2E403A;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.product {
-    display: flex;
-    flex-direction: row;
-    margin: 15px 0 15px 0;
-}
-
-.item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: center;
-}
-
-.item h4 {
-    margin: 0 0 0 0;
-}
-
-.options {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    align-items: center;
-}
-
-.options p {
-    margin: 0;
-    padding: 8px;
-}
-
-
-
-@media screen and (max-width: 1010px) {
-    .shelf {
-        width: 100%;
-        border-radius: 0;
-        border-right: none;
-        border-left: none;
-    }
-
-    .product {
-        display: flex;
-        flex-direction: column;
-        margin: 10px 0 10px 0;
-    }
-
-    .item {
-        justify-content: center;
-        flex-direction: row-reverse;
-    }
-
-    .options {
-        justify-content: center;
-        margin: 0;
-    }
 }

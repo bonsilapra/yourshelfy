@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShelfTemplate } from './ShelfTemplate'
+import { NOShelfTemplate } from './NOShelfTemplate'
 import '../commons/Commons.css';
 import './MainPage.css';
 
@@ -19,7 +20,7 @@ export class MainPage extends React.Component {
                     <ShelfTemplate name="szafka1" id="1"/>
                     <ShelfTemplate name="szafka2" id="2"/>   
                     <ShelfTemplate name="szafka3" id="3"/>      
-                    <ShelfTemplate name="szafka4" id="4"/>                       
+                    <NOShelfTemplate name="NO SHELF" id="4"/>                       
                 </div>
             </div>
 

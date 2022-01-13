@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MyButton } from './../button/MyButton.js';
+import { MyButton } from '../button/MyButton.js';
 import Select from 'react-select';
 import './MainPage.css';
 import '../commons/Commons.css';
 
 
-export class ShelfTemplate extends React.Component {
+export class NOShelfTemplate extends React.Component {
 
     constructor(props) {
         super(props)
@@ -20,16 +20,9 @@ export class ShelfTemplate extends React.Component {
 
     render() {
         return (
-            <div className = "shelf-container">
-                <div className='shelf-name'>
-                    <Link className = "link-shelf" to={"/shelf/" + this.props.id}>{this.props.name} </Link>
-                    <MyButton 
-                            buttonStyle='btn--dark'
-                            buttonSize='btn--small-icon'
-                            style={{marginLeft:"5px"}}
-                            title="Remove">
-                            <i class="fas fa-trash-alt"></i>
-                    </MyButton>
+            <div className = "no-shelf-container">
+                <div className='no-shelf-name'>
+                    <Link className = "link-shelf" to={"/NOshelf/"}>{this.props.name}</Link>
                 </div>
                 <div className='shelf-items' > 
                     <ul>
@@ -38,7 +31,7 @@ export class ShelfTemplate extends React.Component {
                                 item 1
                                 {this.state.editShelf==false ?
                                     (<MyButton 
-                                        buttonStyle='btn--dark-rev'
+                                        buttonStyle='btn--light-rev'
                                         buttonSize='btn--small-icon'
                                         title="Change Shelf"
                                         onClick={()=>this.setEditShelf(true)}>
@@ -47,7 +40,7 @@ export class ShelfTemplate extends React.Component {
                                     (<>
                                         <div className='shelf-items-name'>
                                             <MyButton 
-                                                buttonStyle='btn--dark-rev'
+                                                buttonStyle='btn--light-rev'
                                                 buttonSize='btn--small-icon'
                                                 style={{marginLeft:"5px"}}
                                                 onClick={()=>this.setEditShelf(false)}
