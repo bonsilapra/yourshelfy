@@ -1,12 +1,13 @@
 import React from 'react';
-// import myAxios from '../../utilities/myAxios'
-import axios from 'axios';
+import myAxios from '../../utilities/MyAxios'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { connect } from 'react-redux'
+import { loginUser } from '../../features/user/userSlice'
 import './Modal.css';
 
-export class LoginModal extends React.Component {
+class LoginModal extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,7 +23,6 @@ export class LoginModal extends React.Component {
             },
         };
     }
-
 
     handleEmail(event) {
         this.setState(
@@ -66,18 +66,16 @@ export class LoginModal extends React.Component {
         )
     }
 
+    
 
     login() {
-        axios.post(`login`, {
+        myAxios.post(`login`, {
             email: this.state.form.email,
             password: this.state.form.password,
         })
             .then((response) => {
-                sessionStorage.clear();
-                sessionStorage.setItem('userLogin', JSON.stringify(response.data));
-                let userLogin = JSON.parse(sessionStorage.getItem('userLogin'));
+                this.props.loginUser(response.data);
                 this.props.setOpen(false);
-                window.location.reload()
             })
             .catch((error) => {
                 console.log(error);
@@ -89,10 +87,9 @@ export class LoginModal extends React.Component {
             <>
                 <Modal show={this.props.show} onHide={() => this.props.setOpen(false)}>
                     <Modal.Header closeButton >
-                        <Modal.Title>Logowanie</Modal.Title>
+                        <Modal.Title>Sign in</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p>Zaloguj się:</p>
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>E-mail</Form.Label>
@@ -104,15 +101,15 @@ export class LoginModal extends React.Component {
                                     isInvalid={this.state.isInvalid.email}
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                    Podaj adres e-mail.
+                                    Your e-mail
                                 </Form.Control.Feedback>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Hasło</Form.Label>
+                                <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     type="password"
-                                    placeholder="Hasło"
+                                    placeholder="Password"
                                     value={this.state.form.password}
                                     onChange={(event) => this.handlePassword(event)}
                                     isInvalid={this.state.isInvalid.password}
@@ -137,3 +134,11 @@ export class LoginModal extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+});
+
+const mapDispatchToProps = { loginUser };
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+

@@ -50,6 +50,39 @@
     padding: 8px;
 }
 
+
+/* GetListModal */
+.list-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #CFE8E0;
+    border: 3px solid #2E403A;
+    border-radius: 5px;
+    padding: 0px;
+    margin-top: 0.7rem;
+}
+
+.item-name  {
+    margin: 0;
+    align-items: center;
+}
+.item-name p {
+    margin: 0;
+    padding: 8px;
+}
+
+.item-options {
+    margin-left: auto;
+    align-items: center;
+}
+
+.item-options p {
+    margin: 0;
+    padding: 8px;
+}
+
+
 @media screen and (max-width: 1010px) {
     .shop-container {
         width: 100%;
@@ -74,10 +107,16 @@
 
     .item {
         justify-content: center;
+        margin: 0;
+    }
+
+    .item p {
+        margin-bottom: 0;
     }
 
     .options {
         justify-content: center;
         margin: 0;
+
     }
 }

@@ -2,14 +2,19 @@
 import React, { useState, useEffect } from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 import { Link , Outlet} from "react-router-dom";
-import { RegisterModal } from './RegisterModal';
-import { LoginModal } from './LoginModal';
-// import myAxios from '../../utilities/myAxios';
-import axios from 'axios';
+import { RegisterModal } from './RegisterModal.js';
+import  LoginModal  from './LoginModal.js';
+import myAxios from '../../utilities/MyAxios.js';
 import { MyButton } from './../button/MyButton.js';
+import { useSelector, useDispatch } from 'react-redux'
+import { logoutUser } from '../../features/user/userSlice'
 import './Navigation.css';
 
 function Navigation() {
+
+    const user = useSelector((state) => state.user)
+    const dispatch = useDispatch()
+
 
     const [click, setClick] = useState(false);
     const [visLogin, setVisLogin] = useState(true);
@@ -37,16 +42,14 @@ function Navigation() {
     const showLoginModal = () => setLoginModal(!showLogin);
 
     const logout = () => 
-        axios.get(`logout`)
+        myAxios.get(`logout`)
             .then((response) => {
-                sessionStorage.removeItem('userLogin');
-                window.location.reload()
+                dispatch(logoutUser())
             })
             .catch((error) => {
                 console.log(error);
             })
 
-    const userLogin = JSON.parse(sessionStorage.getItem('userLogin'))
 
     return (
         <div>
@@ -64,7 +67,7 @@ function Navigation() {
                         <Nav.Link as={Link} to="/about" onClick={closeMobileMenu}
                         className='nav-links'>About<i style= {{"paddingLeft":"5px"}} className="fas fa-info-circle" /></Nav.Link>
                         <Nav className='nav-links-mobile'>
-                            {userLogin==null &&
+                            {user==null &&
                                 <MyButton buttonStyle='btn--primary'
                                 buttonSize='btn--large'
                                 onClick={() => {closeMobileMenu(); showLoginModal()}}
@@ -73,7 +76,7 @@ function Navigation() {
                             }
                         </Nav>
                             <Nav className='nav-links-mobile'>
-                            {userLogin==null &&
+                            {user==null &&
                                 <MyButton buttonStyle='btn--outline'
                                 buttonSize='btn--large'
                                 onClick={() => {closeMobileMenu(); showRegisterModal()}}
@@ -82,7 +85,12 @@ function Navigation() {
                             }
                         </Nav>
                         <Nav className='nav-links-mobile'>
-                            {userLogin==null ||
+                            {user==null ||
+                                <p className='user'>{user.email}</p>
+                            }
+                        </Nav>
+                        <Nav className='nav-links-mobile'>
+                            {user==null ||
                                 <MyButton buttonStyle='btn--outline'
                                 buttonSize='btn--large'
                                 onClick={() => {closeMobileMenu(); logout()}}
@@ -92,13 +100,16 @@ function Navigation() {
                         </Nav>
                     </Nav>   
                     <Nav style={{marginLeft: "auto"}}>
-                        {userLogin==null && visLogin && <MyButton buttonStyle='btn--primary'
+                        {user && visLogin &&
+                        <p className='user'>{user.email}</p>
+                        }
+                        {user==null && visLogin && <MyButton buttonStyle='btn--primary'
                         onClick={showLoginModal}>
                             LOG IN</MyButton>}
-                        {userLogin==null && visLogin && <MyButton buttonStyle='btn--outline'
+                        {user==null && visLogin && <MyButton buttonStyle='btn--outline'
                         onClick={showRegisterModal}>
                             REGISTER</MyButton>}
-                        {userLogin==null || (visLogin && <MyButton buttonStyle='btn--outline'
+                        {user==null || (visLogin && <MyButton buttonStyle='btn--outline'
                         onClick={logout}>
                             LOG OUT</MyButton>)}
                     </Nav>

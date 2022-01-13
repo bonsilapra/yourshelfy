@@ -49,7 +49,7 @@
 }
 
 .navbar-light .navbar-nav .nav-link  {
-    color: #E0FFF5 ; ;
+    color: #E0FFF5;
 }
 
 .navbar-light:hover .navbar-nav:hover .nav-link:hover {
@@ -70,6 +70,14 @@
     display: none;
 }
 
+.user {
+    margin-bottom: 0;
+    align-self: center;
+    font-family: 'Lobster', cursive ;
+    font-weight: 400;
+    font-size: larger;
+    color: #E0FFF5
+}
 
 
 @media screen and (max-width: 1010px) {

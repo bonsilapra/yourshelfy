@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
+import { GetListModal } from './GetListModal.js';
 import Select from 'react-select';
 import './ShoppingList.css';
 
@@ -35,9 +36,20 @@ export function ShoppingList() {
     const saveNewCatName = () => setAddCatName(false);
     const cancelNewCatName = () => setAddCatName(false);
 
+    const [showGetList, setGetList] = useState(false);
+
+    const showGetListModal = () => setGetList(!showGetList);
+
     return (
         <div className="page-container">
             <h1>MY SHOPPING LIST</h1>
+            <GetListModal show={showGetList} setOpen={showGetListModal}/>
+            <MyButton 
+                buttonStyle='btn--primary'
+                buttonSize='btn--large'
+                onClick={() => {showGetListModal()}}>
+                Get the shopping list! <i class="fas fa-list-alt"></i>
+            </MyButton>
             <div className='shop-container'>                     
                 <div className='product-category'>
                 {editCategory==false ?

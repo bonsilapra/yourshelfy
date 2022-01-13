@@ -1,6 +1,5 @@
 import React from 'react';
-// import myAxios from '../../utilities/myAxios';
-import axios from 'axios';
+import myAxios from '../../utilities/MyAxios.js';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -86,13 +85,13 @@ export class RegisterModal extends React.Component {
     }
 
     addNewUser() {
-        axios.post(`register`, {
+        myAxios.post(`register`, {
             // login: login,
             email: this.state.form.email,
             password: this.state.form.password
         })
             .then((response) => {
-                alert("udało się!");
+                alert("Succes!");
                 this.props.setOpen(false);
 
             })
@@ -106,10 +105,9 @@ export class RegisterModal extends React.Component {
             <>
                 <Modal show={this.props.show} onHide={() => this.props.setOpen(false)}>
                     <Modal.Header closeButton >
-                        <Modal.Title>Rejestracja</Modal.Title>
+                        <Modal.Title>Sign Up</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p>Zarejestruj się:</p>
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>E-mail</Form.Label>
@@ -121,31 +119,28 @@ export class RegisterModal extends React.Component {
                                     isInvalid={this.state.isInvalid.email}
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                    Podaj poprawny adres e-mail.
+                                    Your e-mail
                                 </Form.Control.Feedback>
-                                <Form.Text className="text-muted">
-                                    Nikt nie dostanie Twojego adresu e-mail.
-                                </Form.Text>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Hasło</Form.Label>
+                                <Form.Label>Password</Form.Label>
                                 <Form.Control
                                     type="password"
-                                    placeholder="Hasło"
+                                    placeholder="Password"
                                     value={this.state.form.password}
                                     onChange={(event) => this.handlePassword(event)}
                                     isInvalid={this.state.isInvalid.password}
                                 />
                                 <Form.Text className="text-muted">
-                                    Twoje hasło powinno mieć co najmniej 8 znaków, wielką i małą literę, cyfrę oraz znak specjany: !"#$%&amp;'&#40;&#41;*+,-./:;&#60;=&#62;?@&#62;\&#93;^_`&#123;|&#125;~
+                                    Your password should contain at least 8 characters, mixture of both uppercase and lowercase letters and at least one number and special character: !"#$%&amp;'&#40;&#41;*+,-./:;&#60;=&#62;?@&#62;\&#93;^_`&#123;|&#125;~
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Powtórz hasło</Form.Label>
+                                <Form.Label>Repeat password</Form.Label>
                                 <Form.Control
                                     type="password"
-                                    placeholder="Powtórz hasło"
+                                    placeholder="Repeat password"
                                     onChange={(event) => this.handleRepPassword(event)}
                                     isInvalid={this.state.isInvalid.repPassword}
                                 />
