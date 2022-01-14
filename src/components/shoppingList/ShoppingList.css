@@ -63,13 +63,22 @@
     margin-top: 0.7rem;
 }
 
+.item-category-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding: 4px;
+    text-align: left;
+    color: #24010C;
+}
+
 .item-name  {
     margin: 0;
     align-items: center;
 }
 .item-name p {
     margin: 0;
-    padding: 8px;
+    padding: 4px;
 }
 
 .item-options {
@@ -79,7 +88,7 @@
 
 .item-options p {
     margin: 0;
-    padding: 8px;
+    padding: 4px;
 }
 
 
@@ -119,4 +128,40 @@
         margin: 0;
 
     }
+}
+/* print in another component version */
+
+/* @media print {
+    body * {
+        visibility: hidden;
+    }
+    .section-to-print, .section-to-print * {
+        visibility: visible;
+        page-break-after: always !important;
+    }
+    .section-to-print {
+        position: absolute;
+        left: 0;
+        top: 0;
+        page-break-after: always !important;
+    }
+} */
+
+/* print in modal version */
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .section-to-print-modal, .section-to-print-modal * {
+        visibility: visible;
+    }
+
+    .modal { 
+        width: auto;
+        height: auto;
+        overflow: visible !important;
+        position:absolute
+    }
+
 }

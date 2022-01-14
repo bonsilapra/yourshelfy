@@ -11,3 +11,16 @@
     background-color: #E0FFF5;
     color: #24010C;
 }
+
+.link-main {
+    text-decoration: none;
+    color: #009463;
+    font-size: large;
+    font-weight: 600;
+}
+
+.link-main:hover {
+    transition: all 0.5s ease-out;
+    color: #24010C;
+    text-shadow: 0 0 10px #009463;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react'
 import { useParams } from "react-router-dom"
-// import myAxios from '../../utilities/myAxios';
+// import myAxios from '../../utilities/MyAxios';
 import { Link } from 'react-router-dom'
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
@@ -50,6 +50,7 @@ export function ShoppingList() {
                 onClick={() => {showGetListModal()}}>
                 Get the shopping list! <i class="fas fa-list-alt"></i>
             </MyButton>
+            {/* <Link className = "link-main" to={"/listComp"}>Get the shopping list! <i class="fas fa-list-alt"></i> </Link> */}
             <div className='shop-container'>                     
                 <div className='product-category'>
                 {editCategory==false ?

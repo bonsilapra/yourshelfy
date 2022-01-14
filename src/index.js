@@ -11,6 +11,7 @@ import { MainPage } from './components/mainPage/MainPage';
 import { Shelf } from './components/mainPage/Shelf';
 import { NOShelf } from './components/mainPage/NOShelf';
 import { ShoppingList } from './components/shoppingList/ShoppingList';
+// import { GetListComp } from './components/shoppingList/GetListComp';
 import { Products } from './components/products/Products';
 import { About } from './components/about/About';
 import store from './app/store';
@@ -31,6 +32,7 @@ ReactDOM.render(
         <Route path="products" element={<Products />} />
         <Route path="shoppingList" element={<ShoppingList />} />
         <Route path="about" element={<About />} />
+        {/* <Route path="listComp" element={<GetListComp />} /> */}
         <Route
           path="*"
           element={
