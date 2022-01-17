@@ -148,7 +148,7 @@ export class RegisterModal extends React.Component {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.props.setOpen(false)}>Wyjście</Button>
+                        <Button variant="secondary" onClick={() => this.props.setOpen(false)}>Exit</Button>
                         <Button type="submit" 
                             disabled={
                                 this.state.isInvalid.email || 
@@ -158,7 +158,7 @@ export class RegisterModal extends React.Component {
                                 !this.state.form.password.length || 
                                 !this.state.form.repPassword.length
                             } variant="primary" onClick={() => this.addNewUser()}>
-                            Zarejestruj
+                            Register
                         </Button>
                     </Modal.Footer>
                 </Modal>

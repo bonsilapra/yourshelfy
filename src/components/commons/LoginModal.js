@@ -118,7 +118,7 @@ class LoginModal extends React.Component {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.props.setOpen(false)}>Wyjście</Button>
+                        <Button variant="secondary" onClick={() => this.props.setOpen(false)}>Exit</Button>
                         <Button type="submit" 
                             disabled={
                                 this.state.isInvalid.email || 
@@ -126,7 +126,7 @@ class LoginModal extends React.Component {
                                 !this.state.form.email.length || 
                                 !this.state.form.password.length
                             } variant="primary" className={"primaryButton"} onClick={() => this.login()}>
-                            Zaloguj
+                            Log in
                         </Button>
                     </Modal.Footer>
                 </Modal>

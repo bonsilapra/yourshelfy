@@ -10,26 +10,29 @@ export class NewShelfTemplate extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {addNewShelf: true}
+        this.state = {
+            addNewShelf: true,
+            shelf: ""
+        }
     }
 
-    // setEditShelf(editShelf) {
-    //     this.setState({ editShelf: editShelf})
-    // }
-
-
-
+    handleNewShelfName(event) {
+        this.setState({shelf:event.target.value});
+    }
 
     render() {
         return (
             <div className = "shelf-container">
                 <div className='shelf-name'>
-                    <input type="text" style={{height:"1.7rem"}}/>
+                    <input 
+                        type="text" 
+                        style={{height:"1.7rem"}}
+                        onChange={(event)=>this.handleNewShelfName(event)}/>
                         <MyButton 
                             buttonStyle='btn--dark'
                             buttonSize='btn--small-icon'
                             style={{marginLeft:"5px"}}
-                            // onClick={saveNewShelf}
+                            onClick={()=> { this.props.addNewShelf(this.state.shelf); this.props.setShow(false) }}
                             title="Save">
                             <i class="fas fa-check"></i>
                         </MyButton>

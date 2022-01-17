@@ -236,7 +236,14 @@ export function ShoppingList() {
                     </MyButton>
                 </div>
             </div>)
-            }
+            }  
+            <div class="fb-send-to-messenger" 
+                messenger_app_id="<APP_ID>" 
+                page_id="PAGE_ID" 
+                data-ref="<PASS_THROUGH_PARAM>" 
+                color="<white>" 
+                size="<standard>">
+            </div> 
         </div>   
     )
 }

@@ -22,7 +22,7 @@ export class ShelfTemplate extends React.Component {
         return (
             <div className = "shelf-container">
                 <div className='shelf-name'>
-                    <Link className = "link-shelf" to={"/shelf/" + this.props.id}>{this.props.name} </Link>
+                    <Link className = "link-shelf" to={"/shelf/" + this.props.id}>{this.props.name.slice(0, -1)} </Link>
                     <MyButton 
                             buttonStyle='btn--dark'
                             buttonSize='btn--small-icon'
