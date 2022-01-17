@@ -1,10 +1,11 @@
 import React from 'react';
-import myAxios from '../../utilities/MyAxios'
+import MyAxios from '../../utilities/MyAxios'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux'
 import { loginUser } from '../../features/user/userSlice'
+import { getShelves } from '../../features/shelf/shelfSlice'
 import './Modal.css';
 
 class LoginModal extends React.Component {
@@ -69,13 +70,18 @@ class LoginModal extends React.Component {
     
 
     login() {
-        myAxios.post(`login`, {
+        MyAxios.post(`login`, {
             email: this.state.form.email,
             password: this.state.form.password,
         })
             .then((response) => {
                 this.props.loginUser(response.data);
                 this.props.setOpen(false);
+                MyAxios.get(`shelf`)
+                .then(res => {
+                    this.props.getShelves(res.data);
+                    }
+                )
             })
             .catch((error) => {
                 console.log(error);
@@ -138,7 +144,7 @@ class LoginModal extends React.Component {
 const mapStateToProps = (state) => ({
 });
 
-const mapDispatchToProps = { loginUser };
+const mapDispatchToProps = { loginUser, getShelves };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
 

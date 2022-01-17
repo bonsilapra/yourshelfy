@@ -4,36 +4,27 @@ import { NOShelfTemplate } from './NOShelfTemplate'
 import { NewShelfTemplate } from './NewShelfTemplate'
 import { MyButton } from './../button/MyButton.js';
 import MyAxios from '../../utilities/MyAxios'
+import { connect } from 'react-redux'
 import '../commons/Commons.css';
 import './MainPage.css';
 
 
-export class MainPage extends React.Component {
+class MainPage extends React.Component {
 
     constructor(props) {
         super(props)
         window.scrollTo(0,0)
         this.state = {
             addNewShelf: false,
-            shelf: "",
             id: ""
         }
         this.setAddNewShelf = this.setAddNewShelf.bind(this);
         this.addNewShelf = this.addNewShelf.bind(this);
-
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     setAddNewShelf(addNewShelf) {
         this.setState({ addNewShelf: addNewShelf})
-    }
-
-    componentDidMount() {
-        MyAxios.get(`shelf`)
-            .then(res => {
-                const shelves = res.data;
-                this.setState({ shelves });
-                }
-            )
     }
 
     addNewShelf (name) {
@@ -41,7 +32,6 @@ export class MainPage extends React.Component {
             headers: { 'Content-Type': 'text/plain' }
         })
         .then((response) => {
-            this.setState();
             this.setAddNewShelf(false);
         })
         .catch((error) => {
@@ -49,14 +39,13 @@ export class MainPage extends React.Component {
     }
 
     handleDelete() {
-        MyAxios.delete(`shelf/`+ this.state.id)
+        MyAxios.delete(`shelf/delete/`+ this.state.id)
         .then((response) => {
             this.setState(
-                {shelf: this.state.peak.filter(element => {
+                {shelf: this.state.shelf.filter(element => {
                     return element.id!==this.state.id
                 })
             });
-            this.setShow(false);
         })
         .catch((error) => {
             console.log(error);
@@ -69,12 +58,12 @@ export class MainPage extends React.Component {
             <div className="page-container" >
                 <h1>MY SHELVES</h1>
                 <div className='shelves-container'>
-                    {this.state.shelves && 
-                    this.state.shelves.sort(function compare(a, b) {
+                    {this.props.shelves && 
+                    this.props.shelves.sort(function compare(a, b) {
                         return a.name.localeCompare(b.name)
                         })
                         .map((shelf) =>
-                            <ShelfTemplate id={shelf.id} name={shelf.name} />
+                            <ShelfTemplate id={shelf.id} name={shelf.name} handleDelete={this.handleDelete} />
                         )
                     }         
                     <NOShelfTemplate name="NO SHELF" />  
@@ -113,5 +102,12 @@ export class MainPage extends React.Component {
             
         );
     }
-
 }
+
+const mapStateToProps = (state) => ({
+    shelves: state.shelf
+});
+
+const mapDispatchToProps = {  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

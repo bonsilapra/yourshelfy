@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react'
 import { useParams } from "react-router-dom"
-// import myAxios from '../../utilities/myAxios';
+import MyAxios from '../../utilities/MyAxios'
 import { Link } from 'react-router-dom'
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
@@ -41,6 +41,24 @@ export function Shelf() {
     const saveNewCatName = () => setAddCatName(false);
     const cancelNewCatName = () => setAddCatName(false);
 
+    let params = useParams();
+
+    const [shelf, setShelf]=useState({});
+    const [isError, setError]=useState(false);
+
+
+    useEffect(()=> {
+        MyAxios.get(`shelf`)
+            .then(res => {
+                const shelf = res.data;
+                setShelf(shelf);
+                }
+            )
+            .catch(error => {
+                setError(true);
+                }
+            )
+    },[]);
 
 
 
@@ -49,7 +67,7 @@ export function Shelf() {
             <div className='shelf-head'>
                 {editShelfName==false ?
                 (<>
-                    <h1>Szafka</h1>
+                    <h1>{shelf.name}</h1>
                     <MyButton 
                         buttonStyle='btn--primary'
                         buttonSize='btn--large-icon'
