@@ -16,6 +16,16 @@ export const shelfSlice = createSlice({
         },
         deleteShelf: (state, action) => {
             state.shelves = state.shelves.filter((shelf) => shelf.id !== action.payload);
+        },
+        editShelf: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                if (value.id != action.payload.id) {
+                    return value
+                } else {
+                    value.name = action.payload.name
+                    return value
+                } 
+            });
         }
     },
     extraReducers: (builder) => {
@@ -25,6 +35,6 @@ export const shelfSlice = createSlice({
     },
 })
 
-export const { getShelves, addShelf, deleteShelf } = shelfSlice.actions
+export const { getShelves, addShelf, deleteShelf, editShelf } = shelfSlice.actions
 
 export const shelfReducer = shelfSlice.reducer

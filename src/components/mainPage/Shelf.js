@@ -1,20 +1,37 @@
 import React, { useState, useEffect }  from 'react'
 import { useParams } from "react-router-dom"
 import MyAxios from '../../utilities/MyAxios'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
 import Select from 'react-select';
+import { editShelf } from '../../features/shelf/shelfSlice'
 import './MainPage.css';
 import '../shoppingList/ShoppingList.css';
 
 
-export function Shelf(props) {
+export function Shelf () {
 
     const [editShelfName, setEditShelfName]=useState(false);
     const openEditShelfName = () => setEditShelfName(true);
-    const saveShelfName = () => setEditShelfName(false);
+    const [inputText, setInputText] = useState("");
+    const handleShefNameChange = (event) => {
+        setInputText(event.target.value)
+    }
     const cancelShelfName = () => setEditShelfName(false);
+    const dispatch = useDispatch()
+    const saveShelfName = () => {
+        MyAxios.put(`shelf/rename/${selectedShelf.id}`, inputText, {
+            headers: { 'Content-Type': 'text/plain' }
+        })
+        .then((response) => {
+            dispatch(editShelf(response.data));
+            setEditShelfName(false);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 
     const [editCategory, setEditCatName]=useState(false);
     const openEditCatName = () => setEditCatName(true);
@@ -43,10 +60,6 @@ export function Shelf(props) {
 
     let params = useParams();
 
-    const [shelf, setShelf]=useState({});
-    const [isError, setError]=useState(false);
-
-
 
 
     const selectedShelf = useSelector((state) => {
@@ -69,7 +82,11 @@ export function Shelf(props) {
                     </MyButton>
                 </>):
                 (<>
-                    <input type="text" style={{height:"2.6rem"}}/>
+                    <input 
+                        type="text" 
+                        style={{height:"2.6rem"}}
+                        onChange = {handleShefNameChange}
+                    />
                     <MyButton 
                         buttonStyle='btn--primary'
                         buttonSize='btn--large-icon'
