@@ -41,8 +41,6 @@ class MainPage extends React.Component {
     }
 
 
-
-
     render() {
         return (
             <div className="page-container" >
@@ -60,7 +58,7 @@ class MainPage extends React.Component {
                                 key={shelf.id}
                                 id={shelf.id} 
                                 name={shelf.name} 
-                                deleteShelf={deleteShelf}
+                                deleteShelf={this.props.deleteShelf}
                             />
                         )
                     }         

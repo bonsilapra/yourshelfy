@@ -38,12 +38,11 @@ export class ShelfTemplate extends React.Component {
         });
     }
 
-
     render() {
         return (
             <div className = "shelf-container">
                 <div className='shelf-name'>
-                    <Link className = "link-shelf" to={"/shelf/" + this.props.id}>{this.props.name} </Link>
+                    <Link className = "link-shelf" to={"/shelf/" + this.props.id}> {this.props.name} </Link>
                     <MyButton 
                             buttonStyle='btn--dark'
                             buttonSize='btn--small-icon'

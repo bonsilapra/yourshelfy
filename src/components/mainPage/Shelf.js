@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react'
 import { useParams } from "react-router-dom"
 import MyAxios from '../../utilities/MyAxios'
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
 import Select from 'react-select';
@@ -9,7 +9,7 @@ import './MainPage.css';
 import '../shoppingList/ShoppingList.css';
 
 
-export function Shelf() {
+export function Shelf(props) {
 
     const [editShelfName, setEditShelfName]=useState(false);
     const openEditShelfName = () => setEditShelfName(true);
@@ -47,19 +47,11 @@ export function Shelf() {
     const [isError, setError]=useState(false);
 
 
-    useEffect(()=> {
-        MyAxios.get(`shelf`)
-            .then(res => {
-                const shelf = res.data;
-                setShelf(shelf);
-                }
-            )
-            .catch(error => {
-                setError(true);
-                }
-            )
-    },[]);
 
+
+    const selectedShelf = useSelector((state) => {
+        return state.shelf.shelves.filter((shelf) => shelf.id == params.id)[0]
+    })
 
 
     return (
@@ -67,7 +59,7 @@ export function Shelf() {
             <div className='shelf-head'>
                 {editShelfName==false ?
                 (<>
-                    <h1>{shelf.name}</h1>
+                    <h1>{selectedShelf.name}</h1>
                     <MyButton 
                         buttonStyle='btn--primary'
                         buttonSize='btn--large-icon'
@@ -77,7 +69,7 @@ export function Shelf() {
                     </MyButton>
                 </>):
                 (<>
-                    <input type="text" style={{height:"2.9rem"}}/>
+                    <input type="text" style={{height:"2.6rem"}}/>
                     <MyButton 
                         buttonStyle='btn--primary'
                         buttonSize='btn--large-icon'
