@@ -30,6 +30,8 @@
 .items {
     display: flex;
     flex-direction: row;
+    height: 2rem;
+    align-items: center;
 }
 
 .amount {

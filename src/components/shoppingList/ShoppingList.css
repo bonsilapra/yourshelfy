@@ -117,6 +117,7 @@
     .item {
         justify-content: center;
         margin: 0;
+        height: 2rem;
     }
 
     .item p {

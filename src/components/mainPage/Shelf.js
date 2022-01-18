@@ -71,7 +71,7 @@ export function Shelf () {
         <div className="page-container">
             <div className='shelf-head'>
                 {editShelfName==false ?
-                (<>
+                (<div style={{display:"flex", height:"2.8rem"}}>
                     <h1>{selectedShelf.name}</h1>
                     <MyButton 
                         buttonStyle='btn--primary'
@@ -80,11 +80,10 @@ export function Shelf () {
                         onClick={openEditShelfName}>
                         <i className="fas fa-edit"></i>
                     </MyButton>
-                </>):
-                (<>
+                </div>):
+                (<div style={{display:"flex", height:"2.8rem"}}>
                     <input 
                         type="text" 
-                        style={{height:"2.6rem"}}
                         onChange = {handleShefNameChange}
                     />
                     <MyButton 
@@ -103,7 +102,7 @@ export function Shelf () {
                         title="Cancel">
                         <i className="fas fa-times"></i>
                     </MyButton>
-                </>)
+                </div>)
                 }
             </div>
             <div className='shop-container'>                     
@@ -149,7 +148,7 @@ export function Shelf () {
                 </div>
                 <div className='category-items'>
                     {editProdName==false ?
-                        (<div className='item'>
+                        (<div className='item' >
                             <MyButton 
                                 buttonStyle='btn--dark-rev'
                                 buttonSize='btn--small-icon'
