@@ -5,6 +5,8 @@ import { NewShelfTemplate } from './NewShelfTemplate'
 import { MyButton } from './../button/MyButton.js';
 import MyAxios from '../../utilities/MyAxios'
 import { connect } from 'react-redux'
+import { addShelf } from '../../features/shelf/shelfSlice'
+import { deleteShelf } from '../../features/shelf/shelfSlice'
 import '../commons/Commons.css';
 import './MainPage.css';
 
@@ -20,7 +22,6 @@ class MainPage extends React.Component {
         }
         this.setAddNewShelf = this.setAddNewShelf.bind(this);
         this.addNewShelf = this.addNewShelf.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
     }
 
     setAddNewShelf(addNewShelf) {
@@ -32,25 +33,14 @@ class MainPage extends React.Component {
             headers: { 'Content-Type': 'text/plain' }
         })
         .then((response) => {
+            this.props.addShelf(response.data)
             this.setAddNewShelf(false);
         })
         .catch((error) => {
         })
     }
 
-    handleDelete() {
-        MyAxios.delete(`shelf/delete/`+ this.state.id)
-        .then((response) => {
-            this.setState(
-                {shelf: this.state.shelf.filter(element => {
-                    return element.id!==this.state.id
-                })
-            });
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    }
+
 
 
     render() {
@@ -70,7 +60,7 @@ class MainPage extends React.Component {
                                 key={shelf.id}
                                 id={shelf.id} 
                                 name={shelf.name} 
-                                handleDelete={this.handleDelete}
+                                deleteShelf={deleteShelf}
                             />
                         )
                     }         
@@ -116,6 +106,6 @@ const mapStateToProps = (state) => ({
     shelves: state.shelf.shelves
 });
 
-const mapDispatchToProps = {  };
+const mapDispatchToProps = { addShelf: addShelf, deleteShelf: deleteShelf };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

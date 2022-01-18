@@ -4,6 +4,7 @@ import { MyButton } from './../button/MyButton.js';
 import Select from 'react-select';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import MyAxios from '../../utilities/MyAxios'
 import './MainPage.css';
 import '../commons/Commons.css';
 
@@ -16,6 +17,7 @@ export class ShelfTemplate extends React.Component {
             editShelf: false, 
             showDeleteModal: false}
         this.setEditShelf = this.setEditShelf.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     setEditShelf(editShelf) {
@@ -24,6 +26,16 @@ export class ShelfTemplate extends React.Component {
 
     setShowDeleteModal(show, id) {
         this.setState({ showDeleteModal: show, id: id});
+    }
+
+    handleDelete(id) {
+        MyAxios.delete(`shelf/delete/`+ id)
+        .then((response) => {
+            this.props.deleteShelf(id)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
 
@@ -49,7 +61,7 @@ export class ShelfTemplate extends React.Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={()=> this.setShowDeleteModal(false)}>No</Button>
-                        <Button variant="primary" onClick={()=> {this.props.handleDelete(); this.setShowDeleteModal(false)}}>Yes, remove</Button>
+                        <Button variant="primary" onClick={()=> {this.handleDelete(this.props.id); this.setShowDeleteModal(false)}}>Yes, remove</Button>
                     </Modal.Footer>
                 </Modal>
                 </div>

@@ -11,9 +11,12 @@ export const shelfSlice = createSlice({
         getShelves: (state, action) => {
             state.shelves = action.payload;
         },
-        // deleteShelf: (state, action) => {
-        //     state.shelf = state.shelf.filter((shelf) => shelf.id !== action.payload.id);
-        // }
+        addShelf: (state, action) => {
+            state.shelves = [...state.shelves, action.payload]
+        },
+        deleteShelf: (state, action) => {
+            state.shelves = state.shelves.filter((shelf) => shelf.id !== action.payload);
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(logoutUser, (state, action) => {
@@ -22,6 +25,6 @@ export const shelfSlice = createSlice({
     },
 })
 
-export const { getShelves, deleteShelf } = shelfSlice.actions
+export const { getShelves, addShelf, deleteShelf } = shelfSlice.actions
 
 export const shelfReducer = shelfSlice.reducer
