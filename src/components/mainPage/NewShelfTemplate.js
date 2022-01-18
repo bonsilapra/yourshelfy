@@ -32,7 +32,7 @@ export class NewShelfTemplate extends React.Component {
                             style={{marginLeft:"5px"}}
                             onClick={()=> { this.props.addNewShelf(this.state.shelf) }}
                             title="Save">
-                            <i class="fas fa-check"></i>
+                            <i className="fas fa-check"></i>
                         </MyButton>
                         <MyButton 
                             buttonStyle='btn--dark'
@@ -40,7 +40,7 @@ export class NewShelfTemplate extends React.Component {
                             style={{marginLeft:"5px"}}
                             onClick={()=>this.props.setShow(false)}
                             title="Cancel">
-                            <i class="fas fa-times"></i>
+                            <i className="fas fa-times"></i>
                         </MyButton>
                 </div>
                 <div className='shelf-items' > 

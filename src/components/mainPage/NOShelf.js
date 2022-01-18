@@ -54,13 +54,13 @@ export function NOShelf() {
                                 style={{marginLeft:"5px"}}
                                 title="Edit name"
                                 onClick={openEditCatName}>
-                                <i class="fas fa-edit"></i>
+                                <i className="fas fa-edit"></i>
                             </MyButton>
                             <MyButton 
                                     buttonStyle='btn--dark'
                                     buttonSize='btn--small-icon'
                                     title="Remove">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i className="fas fa-trash-alt"></i>
                             </MyButton>
                         </>):
                         (<>
@@ -71,7 +71,7 @@ export function NOShelf() {
                                 style={{marginLeft:"5px"}}
                                 onClick={saveCatName}
                                 title="Save">
-                                <i class="fas fa-check"></i>
+                                <i className="fas fa-check"></i>
                             </MyButton>
                             <MyButton 
                                 buttonStyle='btn--dark'
@@ -79,7 +79,7 @@ export function NOShelf() {
                                 style={{marginLeft:"5px"}}
                                 onClick={cancelCatName}
                                 title="Cancel">
-                                <i class="fas fa-times"></i>
+                                <i className="fas fa-times"></i>
                             </MyButton>
                         </>)
                     }
@@ -91,7 +91,7 @@ export function NOShelf() {
                                 buttonStyle='btn--dark-rev'
                                 buttonSize='btn--small-icon'
                                 title="Remove">
-                                <i class="fas fa-trash-alt"></i>
+                                <i className="fas fa-trash-alt"></i>
                             </MyButton>
                             <h4 style={{padding:"5px"}}>Pieczarki</h4>
                             <MyButton 
@@ -99,7 +99,7 @@ export function NOShelf() {
                                 buttonSize='btn--small-icon'
                                 title="Edit name"
                                 onClick={openEditProdName}>
-                                <i class="fas fa-edit"></i>
+                                <i className="fas fa-edit"></i>
                             </MyButton>
                         {changeCategory==false ?
                             (<MyButton 
@@ -107,7 +107,7 @@ export function NOShelf() {
                                 buttonSize='btn--small-icon'
                                 title="Change category"
                                 onClick={openChangeCat}>
-                                <i class="fas fa-boxes"></i>
+                                <i className="fas fa-boxes"></i>
                             </MyButton>):
                             (
                             <>
@@ -122,7 +122,7 @@ export function NOShelf() {
                                 style={{marginLeft:"5px"}}
                                 onClick={cancelCat}
                                 title="Cancel">
-                                <i class="fas fa-times"></i>
+                                <i className="fas fa-times"></i>
                                 </MyButton>
                             </>)
                         }
@@ -135,7 +135,7 @@ export function NOShelf() {
                                 style={{marginLeft:"5px"}}
                                 onClick={saveProdName}
                                 title="Save">
-                                <i class="fas fa-check"></i>
+                                <i className="fas fa-check"></i>
                             </MyButton>
                             <MyButton 
                                 buttonStyle='btn--dark-rev'
@@ -143,7 +143,7 @@ export function NOShelf() {
                                 style={{marginLeft:"5px"}}
                                 onClick={cancelProdName}
                                 title="Cancel">
-                                <i class="fas fa-times"></i>
+                                <i className="fas fa-times"></i>
                             </MyButton>
                         </div>)
                     }
@@ -152,14 +152,14 @@ export function NOShelf() {
                             buttonStyle='btn--dark-rev'
                             buttonSize='btn--small-icon'
                             title="Subtract">
-                            <i class="fas fa-minus"></i>
+                            <i className="fas fa-minus"></i>
                         </MyButton>
                         <p><b>ilość</b></p>
                         <MyButton 
                             buttonStyle='btn--dark-rev'
                             buttonSize='btn--small-icon'
                             title="Add">
-                            <i class="fas fa-plus"></i>
+                            <i className="fas fa-plus"></i>
                         </MyButton>
                         <p> Amount: </p>
                         <input type="number" style={{width:"50px", marginRight:"10px"}}></input>
@@ -180,7 +180,7 @@ export function NOShelf() {
                                 style={{marginLeft:"5px"}}
                                 onClick={saveNewProdName}
                                 title="Save">
-                                <i class="fas fa-check"></i>
+                                <i className="fas fa-check"></i>
                             </MyButton>
                             <MyButton 
                                 buttonStyle='btn--dark-rev'
@@ -188,7 +188,7 @@ export function NOShelf() {
                                 style={{marginLeft:"5px"}}
                                 onClick={cancelNewProdName}
                                 title="Cancel">
-                                <i class="fas fa-times"></i>
+                                <i className="fas fa-times"></i>
                             </MyButton>
                         </div>
                     </div>):
@@ -197,7 +197,7 @@ export function NOShelf() {
                         buttonSize='btn--medium'
                         onClick={openAddProdName}
                         style={{slignItem:"center"}}>
-                            Add product <i class="fas fa-plus-circle"></i>
+                            Add product <i className="fas fa-plus-circle"></i>
                         </MyButton>
                     )
                 }
@@ -207,7 +207,7 @@ export function NOShelf() {
             buttonStyle='btn--primary'
             buttonSize='btn--large'
             onClick={openAddCatName}>
-                Add category <i class="fas fa-plus-circle"></i>
+                Add category <i className="fas fa-plus-circle"></i>
             </MyButton>):
             (<div className='shop-container'>                     
                 <div className='product-category'>
@@ -218,7 +218,7 @@ export function NOShelf() {
                         style={{marginLeft:"5px"}}
                         onClick={saveNewCatName}
                         title="Save">
-                        <i class="fas fa-check"></i>
+                        <i className="fas fa-check"></i>
                     </MyButton>
                     <MyButton 
                         buttonStyle='btn--dark'
@@ -226,7 +226,7 @@ export function NOShelf() {
                         style={{marginLeft:"5px"}}
                         onClick={cancelNewCatName}
                         title="Cancel">
-                        <i class="fas fa-times"></i>
+                        <i className="fas fa-times"></i>
                     </MyButton>
                 </div>
             </div>)

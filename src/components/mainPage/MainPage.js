@@ -59,11 +59,19 @@ class MainPage extends React.Component {
                 <h1>MY SHELVES</h1>
                 <div className='shelves-container'>
                     {this.props.shelves && 
-                    this.props.shelves.sort(function compare(a, b) {
+                    this.props.shelves.filter(function filter(a) {
+                        return a.name != null && a.name.length > 0
+                    })
+                    .sort(function compare(a, b) {
                         return a.name.localeCompare(b.name)
                         })
                         .map((shelf) =>
-                            <ShelfTemplate id={shelf.id} name={shelf.name} handleDelete={this.handleDelete} />
+                            <ShelfTemplate 
+                                key={shelf.id}
+                                id={shelf.id} 
+                                name={shelf.name} 
+                                handleDelete={this.handleDelete}
+                            />
                         )
                     }         
                     <NOShelfTemplate name="NO SHELF" />  
@@ -73,7 +81,7 @@ class MainPage extends React.Component {
                     buttonStyle='btn--primary'
                     buttonSize='btn--large'
                     onClick={()=>this.setAddNewShelf(true)}>
-                    Add new shelf <i class="fas fa-plus-circle"></i>
+                    Add new shelf <i className="fas fa-plus-circle"></i>
                 </MyButton>):
                 (<div className='shelves-container'>   
                     <NewShelfTemplate name="New shelf" setShow={this.setAddNewShelf} addNewShelf={this.addNewShelf}/>                  
@@ -85,7 +93,7 @@ class MainPage extends React.Component {
                             style={{marginLeft:"5px"}}
                             onClick={saveNewCatName}
                             title="Save">
-                            <i class="fas fa-check"></i>
+                            <i className="fas fa-check"></i>
                         </MyButton>
                         <MyButton 
                             buttonStyle='btn--dark'
@@ -93,7 +101,7 @@ class MainPage extends React.Component {
                             style={{marginLeft:"5px"}}
                             onClick={cancelNewCatName}
                             title="Cancel">
-                            <i class="fas fa-times"></i>
+                            <i className="fas fa-times"></i>
                         </MyButton>
                     </div> */}
                 </div>)

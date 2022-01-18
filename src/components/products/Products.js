@@ -47,13 +47,13 @@ export class Products extends React.Component {
                                 style={{marginLeft:"5px"}}
                                 onClick={()=>this.setEditCatName(true)}
                                 title="Edit name">
-                                <i class="fas fa-edit"></i>
+                                <i className="fas fa-edit"></i>
                             </MyButton>
                             <MyButton 
                                 buttonStyle='btn--dark'
                                 buttonSize='btn--small-icon'
                                 title="Remove">
-                                <i class="fas fa-trash-alt"></i>
+                                <i className="fas fa-trash-alt"></i>
                             </MyButton>
                         </>):
                         (<>
@@ -64,7 +64,7 @@ export class Products extends React.Component {
                                 style={{marginLeft:"5px"}}
                                 onClick={()=>this.setEditCatName(false)}
                                 title="Save">
-                                <i class="fas fa-check"></i>
+                                <i className="fas fa-check"></i>
                             </MyButton>
                             <MyButton 
                                 buttonStyle='btn--dark'
@@ -72,7 +72,7 @@ export class Products extends React.Component {
                                 style={{marginLeft:"5px"}}
                                 onClick={()=>this.setEditCatName(false)}
                                 title="Exit">
-                                <i class="fas fa-times"></i>
+                                <i className="fas fa-times"></i>
                             </MyButton>
                         </>)
                         }
@@ -85,7 +85,7 @@ export class Products extends React.Component {
                                     buttonStyle='btn--dark-rev'
                                     buttonSize='btn--small-icon'
                                     title="Remove">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i className="fas fa-trash-alt"></i>
                                 </MyButton>
                                 <p>Lusik </p>
                                 <MyButton 
@@ -93,7 +93,7 @@ export class Products extends React.Component {
                                     buttonSize='btn--small-icon'
                                     title="Edit name"
                                     onClick={()=>this.setEditProdName(true)}>
-                                    <i class="fas fa-edit"></i>
+                                    <i className="fas fa-edit"></i>
                                 </MyButton>
                                 {this.state.changeCat==false ?
                                 (<MyButton 
@@ -101,7 +101,7 @@ export class Products extends React.Component {
                                     buttonSize='btn--small-icon'
                                     title="Change category"
                                     onClick={()=>this.setChangeCat(true)}>
-                                    <i class="fas fa-boxes"></i>
+                                    <i className="fas fa-boxes"></i>
                                 </MyButton>):
                                 (
                                 <>
@@ -116,7 +116,7 @@ export class Products extends React.Component {
                                     style={{marginLeft:"5px"}}
                                     onClick={()=>this.setChangeCat(false)}
                                     title="Cancel">
-                                    <i class="fas fa-times"></i>
+                                    <i className="fas fa-times"></i>
                                     </MyButton>
                                 </>)
                                 }
@@ -129,7 +129,7 @@ export class Products extends React.Component {
                                     style={{marginLeft:"5px"}}
                                     onClick={()=>this.setEditProdName(false)}
                                     title="Save">
-                                    <i class="fas fa-check"></i>
+                                    <i className="fas fa-check"></i>
                                 </MyButton>
                                 <MyButton 
                                     buttonStyle='btn--dark-rev'
@@ -137,7 +137,7 @@ export class Products extends React.Component {
                                     style={{marginLeft:"5px"}}
                                     onClick={()=>this.setEditProdName(false)}
                                     title="Exit">
-                                    <i class="fas fa-times"></i>
+                                    <i className="fas fa-times"></i>
                                 </MyButton>
                             </>)
                         }
@@ -149,7 +149,7 @@ export class Products extends React.Component {
                                 buttonSize='btn--small-icon'
                                 style={{marginLeft:"10px"}}
                                 title="Add to Shopping list">
-                                <i class="fas fa-shopping-basket"></i>
+                                <i className="fas fa-shopping-basket"></i>
                             </MyButton>
                         </div>
                     </div>
@@ -157,7 +157,7 @@ export class Products extends React.Component {
                 {/* <MyButton 
                     buttonStyle='btn--primary'
                     buttonSize='btn--large'>
-                    Add category <i class="fas fa-plus-circle"></i>
+                    Add category <i className="fas fa-plus-circle"></i>
                 </MyButton> */}
             </div>
         );

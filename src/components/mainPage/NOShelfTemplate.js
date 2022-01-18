@@ -35,7 +35,7 @@ export class NOShelfTemplate extends React.Component {
                                         buttonSize='btn--small-icon'
                                         title="Change Shelf"
                                         onClick={()=>this.setEditShelf(true)}>
-                                        <i class="fas fa-dolly-flatbed"></i>
+                                        <i className="fas fa-dolly-flatbed"></i>
                                     </MyButton>):
                                     (<>
                                         <div className='shelf-items-name'>
@@ -45,7 +45,7 @@ export class NOShelfTemplate extends React.Component {
                                                 style={{marginLeft:"5px"}}
                                                 onClick={()=>this.setEditShelf(false)}
                                                 title="Cancel">
-                                                <i class="fas fa-times"></i>
+                                                <i className="fas fa-times"></i>
                                             </MyButton>
                                         </div>
                                         <div className='shelf-items-name'>

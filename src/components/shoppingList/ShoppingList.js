@@ -48,9 +48,9 @@ export function ShoppingList() {
                 buttonStyle='btn--primary'
                 buttonSize='btn--large'
                 onClick={() => {showGetListModal()}}>
-                Get the shopping list! <i class="fas fa-list-alt"></i>
+                Get the shopping list! <i className="fas fa-list-alt"></i>
             </MyButton>
-            {/* <Link className = "link-main" to={"/listComp"}>Get the shopping list! <i class="fas fa-list-alt"></i> </Link> */}
+            {/* <Link className = "link-main" to={"/listComp"}>Get the shopping list! <i className="fas fa-list-alt"></i> </Link> */}
             <div className='shop-container'>                     
                 <div className='product-category'>
                 {editCategory==false ?
@@ -62,13 +62,13 @@ export function ShoppingList() {
                         style={{marginLeft:"5px"}}
                         title="Edit name"
                         onClick={openEditCatName}>
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                     </MyButton>
                     <MyButton 
                             buttonStyle='btn--dark'
                             buttonSize='btn--small-icon'
                             title="Remove">
-                            <i class="fas fa-trash-alt"></i>
+                            <i className="fas fa-trash-alt"></i>
                     </MyButton>
                 </>):
                     (<>
@@ -79,7 +79,7 @@ export function ShoppingList() {
                             style={{marginLeft:"5px"}}
                             onClick={saveCatName}
                             title="Save">
-                            <i class="fas fa-check"></i>
+                            <i className="fas fa-check"></i>
                         </MyButton>
                         <MyButton 
                             buttonStyle='btn--dark'
@@ -87,7 +87,7 @@ export function ShoppingList() {
                             style={{marginLeft:"5px"}}
                             onClick={cancelCatName}
                             title="Cancel">
-                            <i class="fas fa-times"></i>
+                            <i className="fas fa-times"></i>
                         </MyButton>
                     </>)
                     }
@@ -99,7 +99,7 @@ export function ShoppingList() {
                             buttonStyle='btn--dark-rev'
                             buttonSize='btn--small-icon'
                             title="Remove">
-                            <i class="fas fa-trash-alt"></i>
+                            <i className="fas fa-trash-alt"></i>
                         </MyButton>
                         <h4 style={{padding:"5px"}}>Pieczarki</h4>
                         <MyButton 
@@ -107,7 +107,7 @@ export function ShoppingList() {
                             buttonSize='btn--small-icon'
                             title="Edit name"
                             onClick={openEditProdName}>
-                            <i class="fas fa-edit"></i>
+                            <i className="fas fa-edit"></i>
                         </MyButton>
                         {changeCategory==false ?
                         (<MyButton 
@@ -115,7 +115,7 @@ export function ShoppingList() {
                             buttonSize='btn--small-icon'
                             title="Change category"
                             onClick={openChangeCat}>
-                            <i class="fas fa-boxes"></i>
+                            <i className="fas fa-boxes"></i>
                         </MyButton>):
                         (
                         <>
@@ -130,7 +130,7 @@ export function ShoppingList() {
                                 style={{marginLeft:"5px"}}
                                 onClick={cancelCat}
                                 title="Cancel">
-                            <i class="fas fa-times"></i>
+                            <i className="fas fa-times"></i>
                             </MyButton>
                         </>)
                         }
@@ -143,7 +143,7 @@ export function ShoppingList() {
                             style={{marginLeft:"5px"}}
                             onClick={saveProdName}
                             title="Save">
-                            <i class="fas fa-check"></i>
+                            <i className="fas fa-check"></i>
                         </MyButton>
                         <MyButton 
                             buttonStyle='btn--dark-rev'
@@ -151,7 +151,7 @@ export function ShoppingList() {
                             style={{marginLeft:"5px"}}
                             onClick={cancelProdName}
                             title="Cancel">
-                            <i class="fas fa-times"></i>
+                            <i className="fas fa-times"></i>
                         </MyButton>
                     </div>)
                     }
@@ -160,14 +160,14 @@ export function ShoppingList() {
                             buttonStyle='btn--dark-rev'
                             buttonSize='btn--small-icon'
                             title="Subtract">
-                            <i class="fas fa-minus"></i>
+                            <i className="fas fa-minus"></i>
                         </MyButton>
                         <p><b>ilość</b></p>
                         <MyButton 
                             buttonStyle='btn--dark-rev'
                             buttonSize='btn--small-icon'
                             title="Add">
-                            <i class="fas fa-plus"></i>
+                            <i className="fas fa-plus"></i>
                         </MyButton>
                         <p> Amount: </p>
                         <input type="number" style={{width:"50px", marginRight:"10px"}}></input>
@@ -188,7 +188,7 @@ export function ShoppingList() {
                                 style={{marginLeft:"5px"}}
                                 onClick={saveNewProdName}
                                 title="Save">
-                                <i class="fas fa-check"></i>
+                                <i className="fas fa-check"></i>
                             </MyButton>
                             <MyButton 
                                 buttonStyle='btn--dark-rev'
@@ -196,7 +196,7 @@ export function ShoppingList() {
                                 style={{marginLeft:"5px"}}
                                 onClick={cancelNewProdName}
                                 title="Cancel">
-                                <i class="fas fa-times"></i>
+                                <i className="fas fa-times"></i>
                             </MyButton>
                         </div>
                     </div>):
@@ -204,7 +204,7 @@ export function ShoppingList() {
                         buttonStyle='btn--dark-rev'
                         buttonSize='btn--medium'
                         onClick={openAddProdName}>
-                        Add product <i class="fas fa-plus-circle"></i>
+                        Add product <i className="fas fa-plus-circle"></i>
                     </MyButton>)
                 }
             </div>
@@ -213,7 +213,7 @@ export function ShoppingList() {
                 buttonStyle='btn--primary'
                 buttonSize='btn--large'
                 onClick={openAddCatName}>
-                Add category <i class="fas fa-plus-circle"></i>
+                Add category <i className="fas fa-plus-circle"></i>
             </MyButton>):
             (<div className='shop-container'>                     
                 <div className='product-category'>
@@ -224,7 +224,7 @@ export function ShoppingList() {
                         style={{marginLeft:"5px"}}
                         onClick={saveNewCatName}
                         title="Save">
-                        <i class="fas fa-check"></i>
+                        <i className="fas fa-check"></i>
                     </MyButton>
                     <MyButton 
                         buttonStyle='btn--dark'
@@ -232,12 +232,12 @@ export function ShoppingList() {
                         style={{marginLeft:"5px"}}
                         onClick={cancelNewCatName}
                         title="Cancel">
-                        <i class="fas fa-times"></i>
+                        <i className="fas fa-times"></i>
                     </MyButton>
                 </div>
             </div>)
             }  
-            <div class="fb-send-to-messenger" 
+            <div className="fb-send-to-messenger" 
                 messenger_app_id="<APP_ID>" 
                 page_id="PAGE_ID" 
                 data-ref="<PASS_THROUGH_PARAM>" 

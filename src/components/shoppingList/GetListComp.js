@@ -15,7 +15,7 @@ export class GetListComp extends React.Component {
         return (
             <>
                 <div className="page-container">
-                <Link className = "link-main" to={"/shoppingList"}>Back to shopping list <i class="fas fa-undo-alt"></i></Link>
+                <Link className = "link-main" to={"/shoppingList"}>Back to shopping list <i className="fas fa-undo-alt"></i></Link>
                     <div className='section-to-print'>
                         <h1 style={{textAlign:"center"}}>MY SHOPPING LIST</h1>
                         <div className='list-container'>                     
@@ -36,7 +36,7 @@ export class GetListComp extends React.Component {
                         buttonStyle='btn--primary'
                         buttonSize='btn--large'
                         onClick={() => this.print()}>
-                        Print <i class="fas fa-print"></i>
+                        Print <i className="fas fa-print"></i>
                     </MyButton>
                 </div>
             </>
