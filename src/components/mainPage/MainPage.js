@@ -105,7 +105,7 @@ class MainPage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    shelves: state.shelf
+    shelves: state.shelf.shelves
 });
 
 const mapDispatchToProps = {  };

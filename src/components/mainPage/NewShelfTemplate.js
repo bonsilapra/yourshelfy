@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { MyButton } from '../button/MyButton.js';
-import Select from 'react-select';
 import './MainPage.css';
 import '../commons/Commons.css';
 
@@ -32,7 +30,7 @@ export class NewShelfTemplate extends React.Component {
                             buttonStyle='btn--dark'
                             buttonSize='btn--small-icon'
                             style={{marginLeft:"5px"}}
-                            onClick={()=> { this.props.addNewShelf(this.state.shelf); this.props.setShow(false) }}
+                            onClick={()=> { this.props.addNewShelf(this.state.shelf) }}
                             title="Save">
                             <i class="fas fa-check"></i>
                         </MyButton>

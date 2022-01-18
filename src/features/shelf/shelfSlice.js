@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { logoutUser } from '../user/userSlice';
 
+const initialState = {
+    shelves: []
+}
 export const shelfSlice = createSlice({
     name: 'shelf',
-    initialState: [],
+    initialState,
     reducers: {
         getShelves: (state, action) => {
-            return action.payload;
+            state.shelves = action.payload;
         },
         // deleteShelf: (state, action) => {
         //     state.shelf = state.shelf.filter((shelf) => shelf.id !== action.payload.id);
@@ -14,7 +17,7 @@ export const shelfSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(logoutUser, (state, action) => {
-            state.shelf = []
+            state.shelves = []
         });
     },
 })
