@@ -5,10 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
 import { Category } from './Category.js';
-import Select from 'react-select';
 import { editShelf, addCategoryAction } from '../../features/shelf/shelfSlice';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import './MainPage.css';
 import '../shoppingList/ShoppingList.css';
 
@@ -36,26 +33,6 @@ export function Shelf () {
             console.log(error);
         })
     }
-
-    // const [editCategory, setEditCatName]=useState(false);
-    // const openEditCatName = () => setEditCatName(true);
-    // const saveCatName = () => setEditCatName(false);
-    // const cancelCatName = () => setEditCatName(false);
-
-    // const [changeCategory, setChangeCat]=useState(false);
-    // const openChangeCat = () => setChangeCat(true);
-    // // const saveCat = () => setChangeCat(false);
-    // const cancelCat = () => setChangeCat(false);
-
-    // const [editProdName, setEditProdName]=useState(false);
-    // const openEditProdName = () => setEditProdName(true);
-    // const saveProdName = () => setEditProdName(false);
-    // const cancelProdName = () => setEditProdName(false);
-
-    // const [addProdName, setAddProdName]=useState(false);
-    // const openAddProdName = () => setAddProdName(true);
-    // const saveNewProdName = () => setAddProdName(false);
-    // const cancelNewProdName = () => setAddProdName(false);
 
     const [addCategory, setAddCatName]=useState(false);
     const openAddCatName = () => setAddCatName(true);
@@ -104,6 +81,7 @@ export function Shelf () {
                     <input 
                         type="text" 
                         onChange={handleShefNameChange}
+                        value={selectedShelf.name}
                     />
                     <MyButton 
                         buttonStyle='btn--primary'
@@ -130,7 +108,7 @@ export function Shelf () {
                 arrayForSort.sort((a,b) =>
                 a.name.localeCompare(b.name))
                 .map((cat) =>   
-                    <Category key={cat.id} selectedCat={cat}/>
+                    <Category key={cat.id} selectedCat={cat} />
                 )}
             </div>
             <div className='add-category'>

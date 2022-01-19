@@ -58,6 +58,7 @@ class MainPage extends React.Component {
                                 key={shelf.id}
                                 id={shelf.id} 
                                 name={shelf.name} 
+                                shelf={shelf}
                                 deleteShelf={this.props.deleteShelf}
                             />
                         )

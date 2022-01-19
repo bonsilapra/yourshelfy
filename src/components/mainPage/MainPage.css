@@ -92,6 +92,7 @@
 .shelf-items li {
     display: flex;
     flex-direction: row;
+    height: 2rem;
 }
 
 
@@ -115,6 +116,20 @@
     height: 3rem
 }
 
+.category-product-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-items-shelf {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    text-align: left;
+    color: #24010C;
+}
+
+
 @media screen and (max-width: 1010px) {
     .shelf-categories-container {
         width: 100%;
@@ -125,5 +140,17 @@
 
     .add-category {
         width: 100%;
+    }
+
+    .category-product-list {
+        padding-top: 5px;
+    }
+
+    .category-items-shelf {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+        text-align: center;
     }
 }

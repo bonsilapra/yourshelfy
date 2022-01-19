@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MyButton } from './../button/MyButton.js';
-import Select from 'react-select';
+// import Select from 'react-select';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import MyAxios from '../../utilities/MyAxios'
@@ -15,7 +15,8 @@ export class ShelfTemplate extends React.Component {
         super(props)
         this.state = {
             editShelf: false, 
-            showDeleteModal: false}
+            showDeleteModal: false,
+            shelfOptions: []}
         this.setEditShelf = this.setEditShelf.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
     }
@@ -28,6 +29,13 @@ export class ShelfTemplate extends React.Component {
         this.setState({ showDeleteModal: show, id: id});
     }
 
+    setShelfOptions() {
+        this.setState({ shelfOptions: this.props.shelf.map((shelf) => {
+            return shelf.name
+            })
+        })
+    }
+
     handleDelete(id) {
         MyAxios.delete(`shelf/delete/`+ id)
         .then((response) => {
@@ -37,6 +45,7 @@ export class ShelfTemplate extends React.Component {
             console.log(error);
         });
     }
+
 
     render() {
         return (
@@ -66,9 +75,14 @@ export class ShelfTemplate extends React.Component {
                 </div>
                 <div className='shelf-items' > 
                     <ul>
+                    {this.props.shelf &&
+                    this.props.shelf.categories.map((cat) =>
+                    cat.products.sort((a,b) =>
+                    a.product.name.localeCompare(b.product.name))
+                    .map((prod) =>
                         <li>
                             <div className='shelf-items-name'>
-                                item 1
+                                {prod.product.name}
                                 {this.state.editShelf==false ?
                                     (<MyButton 
                                         buttonStyle='btn--dark-rev'
@@ -89,28 +103,22 @@ export class ShelfTemplate extends React.Component {
                                             </MyButton>
                                         </div>
                                         <div className='shelf-items-name'>
-                                            <Select 
-                                                style={{height:"1rem"}}
-                                                placeholder="Pick shelf" 
-                                                // onChange={} 
-                                                // options={}
-                                            />
+                                            <select name="shelves">
+                                                <option>Pick a shelf</option>
+                                                {/* {this.state.shelfOptions.map((shelfName) => */}
+                                                <option >asdf</option>
+                                                {/* )} */}
+                                            </select>
                                         </div>
                                     </>)
                                 }
                             </div>
                             <div style={{marginLeft:"auto"}}>
-                                <b>ilość</b>
+                                <b>{prod.amount}</b>
                             </div>
                         </li>
-                        <li>
-                            <div>
-                                item 2
-                            </div>
-                            <div style={{marginLeft:"auto"}}>
-                                <b>ilość</b>
-                            </div>
-                        </li>
+                    )
+                    )}
                     </ul>
                 </div>
             </div>
