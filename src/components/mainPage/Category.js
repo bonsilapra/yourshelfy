@@ -2,7 +2,7 @@ import React, { useState, useEffect }  from 'react'
 import { useParams } from "react-router-dom"
 import MyAxios from '../../utilities/MyAxios'
 import { useDispatch } from 'react-redux'
-import { deleteCategoryAction } from '../../features/shelf/shelfSlice';
+import { deleteCategoryAction, editCategoryAction } from '../../features/shelf/shelfSlice';
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
 import Select from 'react-select';
@@ -18,7 +18,22 @@ export function Category ({selectedCat}) {
 
     const [editCategory, setEditCatName]=useState(false);
     const openEditCatName = () => setEditCatName(true);
-    const saveCatName = () => setEditCatName(false);
+    const [inputCatName, setInputCatname] = useState("");
+    const handleCatNameChange = (event) => {
+        setInputCatname(event.target.value)
+    }
+    const saveCatName = (id) => {
+        MyAxios.put(`category/rename/${id}`, inputCatName, {
+            headers: { 'Content-Type': 'text/plain' }
+        })
+        .then(response => {
+            dispatch(editCategoryAction({catId: id, newCatName: inputCatName}));
+            setEditCatName(false)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
     const cancelCatName = () => setEditCatName(false);
 
     const [changeCategory, setChangeCat]=useState(false);
@@ -37,7 +52,6 @@ export function Category ({selectedCat}) {
     const cancelNewProdName = () => setAddProdName(false);
 
     const [showDeleteModal, setShowDeleteModal]=useState(false);
-
     const handleDelete = (id) => {
         MyAxios.delete(`category/delete/${id}`)
         .then(response => {
@@ -73,12 +87,16 @@ export function Category ({selectedCat}) {
                         </MyButton>
                     </>):
                     (<>
-                        <input type="text" style={{height:"1.7rem"}}/>
+                        <input 
+                            type="text" 
+                            style={{height:"1.7rem"}}
+                            onChange={handleCatNameChange}
+                        />
                         <MyButton 
                             buttonStyle='btn--dark'
                             buttonSize='btn--small-icon'
                             style={{marginLeft:"5px"}}
-                            onClick={saveCatName}
+                            onClick={()=> saveCatName(selectedCat.id)}
                             title="Save">
                             <i className="fas fa-check"></i>
                         </MyButton>
@@ -149,7 +167,10 @@ export function Category ({selectedCat}) {
                     }
                     </div>):
                     (<div className='item'>
-                        <input type="text" style={{height:"2rem"}}/>
+                        <input 
+                            type="text" 
+                            style={{height:"2rem"}}
+                        />
                         <MyButton 
                             buttonStyle='btn--dark-rev'
                             buttonSize='btn--small-icon'

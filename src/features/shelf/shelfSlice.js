@@ -38,13 +38,23 @@ export const shelfSlice = createSlice({
             });
         },
         editCategoryAction: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                value.categories.map((cat) => {
+                    if (cat.id != action.payload.catId) {
+                        return cat
+                    } else {
+                        cat.name = action.payload.newCatName
+                        return cat
+                    }
+                })
+                return value
+            });
         },
         deleteCategoryAction: (state, action) => {
             state.shelves = state.shelves.map((value) => {
                 value.categories = value.categories.filter((shelf) => shelf.id !== action.payload)
                 return value
             });
-            
         },
         
     },
