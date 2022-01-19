@@ -26,7 +26,22 @@ export const shelfSlice = createSlice({
                     return value
                 } 
             });
-        }
+        },
+        addCategoryAction: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                if (value.id != action.payload.shelfId) {
+                    return value
+                } else {
+                    value.categories = [...value.categories, action.payload.newCat]
+                    return value
+                } 
+            });
+        },
+        editCategoryAction: (state, action) => {
+        },
+        deleteCategoryAction: (state, action) => {
+        },
+        
     },
     extraReducers: (builder) => {
         builder.addCase(logoutUser, (state, action) => {
@@ -35,6 +50,6 @@ export const shelfSlice = createSlice({
     },
 })
 
-export const { getShelves, addShelf, deleteShelf, editShelf } = shelfSlice.actions
+export const { getShelves, addShelf, deleteShelf, editShelf, addCategoryAction, editCategoryAction, deleteCategoryAction } = shelfSlice.actions
 
 export const shelfReducer = shelfSlice.reducer
