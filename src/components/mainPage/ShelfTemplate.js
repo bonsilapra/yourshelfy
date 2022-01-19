@@ -52,17 +52,17 @@ export class ShelfTemplate extends React.Component {
                             <i className="fas fa-trash-alt"></i>
                     </MyButton>
                     <Modal show={this.state.showDeleteModal} onHide={()=> this.setShowDeleteModal(false)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Deleting</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <p>Are you sure you want to delete shelf?</p>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={()=> this.setShowDeleteModal(false)}>No</Button>
-                        <Button variant="primary" onClick={()=> {this.handleDelete(this.props.id); this.setShowDeleteModal(false)}}>Yes, remove</Button>
-                    </Modal.Footer>
-                </Modal>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Deleting</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <p>Are you sure you want to delete shelf?</p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={()=> this.setShowDeleteModal(false)}>No</Button>
+                            <Button variant="primary" onClick={()=> {this.handleDelete(this.props.id); this.setShowDeleteModal(false)}}>Yes, remove</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
                 <div className='shelf-items' > 
                     <ul>

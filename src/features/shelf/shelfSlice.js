@@ -40,6 +40,11 @@ export const shelfSlice = createSlice({
         editCategoryAction: (state, action) => {
         },
         deleteCategoryAction: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                value.categories = value.categories.filter((shelf) => shelf.id !== action.payload)
+                return value
+            });
+            
         },
         
     },

@@ -18,6 +18,15 @@
     border-radius: 5px;
 }
 
+.shelf-categories-container {
+    display: flex;
+    flex-direction: column;
+    /* min-height: 150px; */
+    margin: 0;
+    padding: 0;
+    background-color: #E0FFF5;
+}
+
 .no-shelf-container {
     display: flex;
     flex-direction: column;
@@ -96,4 +105,25 @@
 
 .shelf-head h1{
     margin-bottom: 0;
+}
+
+.add-category {
+    height: 4rem;
+}
+
+.add-product {
+    height: 3rem
+}
+
+@media screen and (max-width: 1010px) {
+    .shelf-categories-container {
+        width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .add-category {
+        width: 100%;
+    }
 }
