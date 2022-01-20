@@ -1,7 +1,7 @@
 // moje szafki, moje produkty, lista zakupow, o aplikacji
 import React, { useState, useEffect } from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
-import { Link , Outlet} from "react-router-dom";
+import { Link , Outlet, useNavigate } from "react-router-dom";
 import { RegisterModal } from './RegisterModal.js';
 import  LoginModal  from './LoginModal.js';
 import myAxios from '../../utilities/MyAxios.js';
@@ -14,7 +14,6 @@ function Navigation() {
 
     const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
-
 
     const [click, setClick] = useState(false);
     const [visLogin, setVisLogin] = useState(true);
@@ -41,10 +40,13 @@ function Navigation() {
     const showRegisterModal = () => setRegisterModal(!showRegister);
     const showLoginModal = () => setLoginModal(!showLogin);
 
+    const navigate = useNavigate()
+
     const logout = () => 
         myAxios.get(`logout`)
             .then((response) => {
-                dispatch(logoutUser())
+                navigate('')
+                dispatch(logoutUser());
             })
             .catch((error) => {
                 console.log(error);

@@ -69,6 +69,58 @@ export const shelfSlice = createSlice({
             return value
             })
         },
+        deleteProductAction: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                value.categories.map((cat) => {
+                    if (cat.id != action.payload.catID) {
+                        return cat
+                    } else {
+                        cat.products = cat.products.filter((prod) => prod.product.id !==action.payload.prodID)
+                        return cat
+                    }
+                })
+                return value
+            });
+        },
+        editProductAction: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                value.categories.map((cat) => {
+                    if (cat.id != action.payload.catID) {
+                        return cat
+                    } else {
+                        cat.products = cat.products.map((prod) => {
+                            if (prod.product.id != action.payload.oldProductId) {
+                            return prod
+                        } else {
+                            prod.product = action.payload.newProduct
+                            return prod
+                            }
+                        })
+                    }
+                })
+                return value
+            });
+        },
+        deltaProduct: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                value.categories.map((cat) => {
+                    if (cat.id != action.payload.catID) {
+                        return cat
+                    } else {
+                        cat.products = cat.products.map((prod) => {
+                            if (prod.product.id != action.payload.prodID) {
+                            return prod
+                        } else {
+                            prod.amount = action.payload.amount
+                            return prod
+                            }
+                        })
+                    }
+                })
+                return value
+            });
+        },
+        
     },
     extraReducers: (builder) => {
         builder.addCase(logoutUser, (state, action) => {
@@ -85,7 +137,10 @@ export const {
     addCategoryAction, 
     editCategoryAction, 
     deleteCategoryAction,
-    addProductAction 
+    addProductAction,
+    deleteProductAction,
+    editProductAction,
+    deltaProduct
 } = shelfSlice.actions
 
 export const shelfReducer = shelfSlice.reducer

@@ -46,7 +46,6 @@ export class ShelfTemplate extends React.Component {
         });
     }
 
-
     render() {
         return (
             <div className = "shelf-container">
@@ -76,8 +75,9 @@ export class ShelfTemplate extends React.Component {
                 <div className='shelf-items' > 
                     <ul>
                     {this.props.shelf &&
-                    this.props.shelf.categories.map((cat) =>
-                    cat.products.sort((a,b) =>
+                    this.props.shelf.categories.slice().sort((a,b) =>
+                    a.name.localeCompare(b.name)).map((cat) =>
+                    cat.products.slice().sort((a,b) =>
                     a.product.name.localeCompare(b.product.name))
                     .map((prod) =>
                         <li>

@@ -3,9 +3,11 @@ import { MyButton } from './../button/MyButton.js';
 import '../commons/Commons.css';
 import './Products.css';
 import Select from 'react-select';
+import { connect } from 'react-redux'
 
 
-export class Products extends React.Component {
+
+class Products extends React.Component {
 
     constructor(props) {
         super(props)
@@ -36,123 +38,138 @@ export class Products extends React.Component {
         return (
             <div className="page-container" >
                 <h1>MY PRODUCTS</h1>
-                <div className='products-container'>                     
-                    <div className='product-category'>
-                        {this.state.editCatName==false ?
-                        (<>
-                            Kategoria
-                            <MyButton 
-                                buttonStyle='btn--dark'
-                                buttonSize='btn--small-icon'
-                                style={{marginLeft:"5px"}}
-                                onClick={()=>this.setEditCatName(true)}
-                                title="Edit name">
-                                <i className="fas fa-edit"></i>
-                            </MyButton>
-                            <MyButton 
-                                buttonStyle='btn--dark'
-                                buttonSize='btn--small-icon'
-                                title="Remove">
-                                <i className="fas fa-trash-alt"></i>
-                            </MyButton>
-                        </>):
-                        (<>
-                            <input type="text" style={{height:"1.7rem"}}/>
-                            <MyButton 
-                                buttonStyle='btn--dark'
-                                buttonSize='btn--small-icon'
-                                style={{marginLeft:"5px"}}
-                                onClick={()=>this.setEditCatName(false)}
-                                title="Save">
-                                <i className="fas fa-check"></i>
-                            </MyButton>
-                            <MyButton 
-                                buttonStyle='btn--dark'
-                                buttonSize='btn--small-icon'
-                                style={{marginLeft:"5px"}}
-                                onClick={()=>this.setEditCatName(false)}
-                                title="Exit">
-                                <i className="fas fa-times"></i>
-                            </MyButton>
-                        </>)
-                        }
-                    </div>
-                    <div className='category-items'>
-                        <div className='items'>
-                            {this.state.editProdName==false ?
-                            (<>
-                                <MyButton 
-                                    buttonStyle='btn--dark-rev'
-                                    buttonSize='btn--small-icon'
-                                    title="Remove">
-                                    <i className="fas fa-trash-alt"></i>
-                                </MyButton>
-                                <p>Lusik </p>
-                                <MyButton 
-                                    buttonStyle='btn--dark-rev'
-                                    buttonSize='btn--small-icon'
-                                    title="Edit name"
-                                    onClick={()=>this.setEditProdName(true)}>
-                                    <i className="fas fa-edit"></i>
-                                </MyButton>
-                                {this.state.changeCat==false ?
-                                (<MyButton 
-                                    buttonStyle='btn--dark-rev'
-                                    buttonSize='btn--small-icon'
-                                    title="Change category"
-                                    onClick={()=>this.setChangeCat(true)}>
-                                    <i className="fas fa-boxes"></i>
-                                </MyButton>):
-                                (
-                                <>
-                                    <Select 
-                                        placeholder="Category" 
-                                        // onChange={} 
-                                        // options={}
-                                    />
+                <div className='products-container'>   
+                {this.props.shelves && 
+                    this.props.shelves.map((shelf) =>
+                    shelf.categories.slice().filter(function filter(a) {
+                        return a.name != null && a.name.length > 0
+                    })
+                    .sort(function compare(a, b) {
+                        return a.name.localeCompare(b.name)
+                        })
+                        .map((category) =>     
+                        <>           
+                            <div className='product-category'>
+                                {this.state.editCatName==false ?
+                                (<>
+                                    {category.name}
                                     <MyButton 
-                                    buttonStyle='btn--dark-rev'
-                                    buttonSize='btn--small-icon'
-                                    style={{marginLeft:"5px"}}
-                                    onClick={()=>this.setChangeCat(false)}
-                                    title="Cancel">
-                                    <i className="fas fa-times"></i>
+                                        buttonStyle='btn--dark'
+                                        buttonSize='btn--small-icon'
+                                        style={{marginLeft:"5px"}}
+                                        onClick={()=>this.setEditCatName(true)}
+                                        title="Edit name">
+                                        <i className="fas fa-edit"></i>
+                                    </MyButton>
+                                    <MyButton 
+                                        buttonStyle='btn--dark'
+                                        buttonSize='btn--small-icon'
+                                        title="Remove">
+                                        <i className="fas fa-trash-alt"></i>
+                                    </MyButton>
+                                </>):
+                                (<>
+                                    <input type="text" style={{height:"1.7rem"}}/>
+                                    <MyButton 
+                                        buttonStyle='btn--dark'
+                                        buttonSize='btn--small-icon'
+                                        style={{marginLeft:"5px"}}
+                                        onClick={()=>this.setEditCatName(false)}
+                                        title="Save">
+                                        <i className="fas fa-check"></i>
+                                    </MyButton>
+                                    <MyButton 
+                                        buttonStyle='btn--dark'
+                                        buttonSize='btn--small-icon'
+                                        style={{marginLeft:"5px"}}
+                                        onClick={()=>this.setEditCatName(false)}
+                                        title="Exit">
+                                        <i className="fas fa-times"></i>
                                     </MyButton>
                                 </>)
                                 }
-                            </>):
-                            (<>
-                                <input type="text" style={{height:"1.7rem"}}/>
-                                <MyButton 
-                                    buttonStyle='btn--dark-rev'
-                                    buttonSize='btn--small-icon'
-                                    style={{marginLeft:"5px"}}
-                                    onClick={()=>this.setEditProdName(false)}
-                                    title="Save">
-                                    <i className="fas fa-check"></i>
-                                </MyButton>
-                                <MyButton 
-                                    buttonStyle='btn--dark-rev'
-                                    buttonSize='btn--small-icon'
-                                    style={{marginLeft:"5px"}}
-                                    onClick={()=>this.setEditProdName(false)}
-                                    title="Exit">
-                                    <i className="fas fa-times"></i>
-                                </MyButton>
-                            </>)
-                        }
-                        </div>
-                        <div className='amount'>
-                            <p><b>ilość</b></p>
-                            <MyButton 
-                                buttonStyle='btn--dark-rev'
-                                buttonSize='btn--small-icon'
-                                style={{marginLeft:"10px"}}
-                                title="Add to Shopping list">
-                                <i className="fas fa-shopping-basket"></i>
-                            </MyButton>
-                        </div>
-                    </div>
+                            </div>
+                            {category.products.map((item) =>
+                                <div className='category-items'>
+                                    <div className='items'>
+                                        {this.state.editProdName==false ?
+                                        (<>
+                                            <MyButton 
+                                                buttonStyle='btn--dark-rev'
+                                                buttonSize='btn--small-icon'
+                                                title="Remove">
+                                                <i className="fas fa-trash-alt"></i>
+                                            </MyButton>
+                                            <p>{item.product.name}</p>
+                                            <MyButton 
+                                                buttonStyle='btn--dark-rev'
+                                                buttonSize='btn--small-icon'
+                                                title="Edit name"
+                                                onClick={()=>this.setEditProdName(true)}>
+                                                <i className="fas fa-edit"></i>
+                                            </MyButton>
+                                            {this.state.changeCat==false ?
+                                            (<MyButton 
+                                                buttonStyle='btn--dark-rev'
+                                                buttonSize='btn--small-icon'
+                                                title="Change category"
+                                                onClick={()=>this.setChangeCat(true)}>
+                                                <i className="fas fa-boxes"></i>
+                                            </MyButton>):
+                                            (
+                                            <>
+                                                <Select 
+                                                    placeholder="Category" 
+                                                    // onChange={} 
+                                                    // options={}
+                                                />
+                                                <MyButton 
+                                                buttonStyle='btn--dark-rev'
+                                                buttonSize='btn--small-icon'
+                                                style={{marginLeft:"5px"}}
+                                                onClick={()=>this.setChangeCat(false)}
+                                                title="Cancel">
+                                                <i className="fas fa-times"></i>
+                                                </MyButton>
+                                            </>)
+                                            }
+                                        </>):
+                                        (<>
+                                            <input type="text" style={{height:"1.7rem"}}/>
+                                            <MyButton 
+                                                buttonStyle='btn--dark-rev'
+                                                buttonSize='btn--small-icon'
+                                                style={{marginLeft:"5px"}}
+                                                onClick={()=>this.setEditProdName(false)}
+                                                title="Save">
+                                                <i className="fas fa-check"></i>
+                                            </MyButton>
+                                            <MyButton 
+                                                buttonStyle='btn--dark-rev'
+                                                buttonSize='btn--small-icon'
+                                                style={{marginLeft:"5px"}}
+                                                onClick={()=>this.setEditProdName(false)}
+                                                title="Exit">
+                                                <i className="fas fa-times"></i>
+                                            </MyButton>
+                                        </>)
+                                    }
+                                    </div>
+                                    <div className='amount'>
+                                        <p><b>{item.amount}</b></p>
+                                        <MyButton 
+                                            buttonStyle='btn--dark-rev'
+                                            buttonSize='btn--small-icon'
+                                            style={{marginLeft:"10px"}}
+                                            title="Add to Shopping list">
+                                            <i className="fas fa-shopping-basket"></i>
+                                        </MyButton>
+                                    </div>
+                                </div>
+                                )}
+                        </>
+                        ))}
+                    
                 </div>
                 {/* <MyButton 
                     buttonStyle='btn--primary'
@@ -163,3 +180,11 @@ export class Products extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    shelves: state.shelf.shelves
+});
+
+const mapDispatchToProps = {  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

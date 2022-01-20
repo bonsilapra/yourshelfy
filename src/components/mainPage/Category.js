@@ -18,7 +18,10 @@ export function Category ({selectedCat}) {
     const dispatch = useDispatch()
 
     const [editCategory, setEditCatName]=useState(false);
-    const openEditCatName = () => setEditCatName(true);
+    const openEditCatName = () => {
+        setEditCatName(true);
+        setInputCatname(selectedCat.name)
+    }
     const [inputCatName, setInputCatname] = useState("");
     const handleCatNameChange = (event) => {
         setInputCatname(event.target.value)
@@ -101,7 +104,7 @@ export function Category ({selectedCat}) {
                             type="text" 
                             style={{height:"1.7rem"}}
                             onChange={handleCatNameChange}
-                            value={selectedCat.name}
+                            value={inputCatName}
                         />
                         <MyButton 
                             buttonStyle='btn--dark'
@@ -140,7 +143,7 @@ export function Category ({selectedCat}) {
                 arrayForSort.sort((a,b) =>
                 a.product.name.localeCompare(b.product.name))
                 .map((prod) =>   
-                    <Product key={prod.product.id} selectedProd={prod}/>
+                    <Product key={prod.product.id} selectedProd={prod} selectedCat={selectedCat}/>
                 )}
                 <div className='add-product'>
                     {addProdName==true ?

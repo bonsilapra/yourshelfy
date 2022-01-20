@@ -13,7 +13,7 @@ import { Shelf } from './components/mainPage/Shelf';
 import { NOShelf } from './components/mainPage/NOShelf';
 import { ShoppingList } from './components/shoppingList/ShoppingList';
 // import { GetListComp } from './components/shoppingList/GetListComp';
-import { Products } from './components/products/Products';
+import Products from './components/products/Products';
 import { About } from './components/about/About';
 import configureStore from './app/store';
 import { Provider } from 'react-redux';

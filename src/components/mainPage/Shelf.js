@@ -15,7 +15,10 @@ export function Shelf () {
     const dispatch = useDispatch()
 
     const [editShelfName, setEditShelfName]=useState(false);
-    const openEditShelfName = () => setEditShelfName(true);
+    const openEditShelfName = () => {
+        setEditShelfName(true);
+        setInputText(selectedShelf.name)
+    }
     const [inputText, setInputText] = useState("");
     const handleShefNameChange = (event) => {
         setInputText(event.target.value)
@@ -81,7 +84,7 @@ export function Shelf () {
                     <input 
                         type="text" 
                         onChange={handleShefNameChange}
-                        value={selectedShelf.name}
+                        value={inputText}
                     />
                     <MyButton 
                         buttonStyle='btn--primary'
