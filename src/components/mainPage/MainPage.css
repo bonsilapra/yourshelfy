@@ -1,7 +1,7 @@
 .shelves-container {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     width: 95vw;
     justify-content: center;
     color: #24010C
@@ -31,7 +31,7 @@
     display: flex;
     flex-direction: column;
     width: 400px;
-    min-height: 150px;
+    min-height: 100px;
     margin: 0.7rem;
     border: 3px solid #009463;
     background-color: #E0FFF5;
@@ -39,6 +39,8 @@
 }
 
 .shelf-name {
+    display: flex;
+    align-items: center;
     justify-content: center;
     padding: 5px;
     background-color: #2E403A;
@@ -51,6 +53,8 @@
     padding: 5px;
     background-color: #009463;
     text-align: center;
+    font-size: larger;
+
 }
 
 .shelf-name a {
@@ -130,7 +134,7 @@
 }
 
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 800px) {
     .shelf-categories-container {
         width: 100%;
         border-radius: 0;

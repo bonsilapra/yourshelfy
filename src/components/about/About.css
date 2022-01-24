@@ -15,7 +15,7 @@
     margin: 0;
 }
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 800px) {
     .about-container {
         width: 100%;
         border-radius: 0;

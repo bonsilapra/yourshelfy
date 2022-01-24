@@ -48,17 +48,20 @@ export class ShelfTemplate extends React.Component {
 
     render() {
         return (
-            <div className = "shelf-container">
-                <div className='shelf-name'>
+            <div className = {this.props.isNullShelf==false ? "shelf-container" : "no-shelf-container"}>
+                <div className= {this.props.isNullShelf==false ? "shelf-name" : "no-shelf-name"}>
                     <Link className = "link-shelf" to={"/shelf/" + this.props.id}> {this.props.name} </Link>
-                    <MyButton 
-                            buttonStyle='btn--dark'
-                            buttonSize='btn--small-icon'
-                            style={{marginLeft:"5px"}}
-                            title="Remove"
-                            onClick={()=>this.setShowDeleteModal(true)}> 
-                            <i className="fas fa-trash-alt"></i>
-                    </MyButton>
+                    {this.props.isNullShelf==false ?
+                        <MyButton 
+                                buttonStyle='btn--dark'
+                                buttonSize='btn--small-icon'
+                                style={{marginLeft:"5px"}}
+                                title="Remove"
+                                onClick={()=>this.setShowDeleteModal(true)}> 
+                                <i className="fas fa-trash-alt"></i>
+                        </MyButton> :
+                        <></>
+                    }
                     <Modal show={this.state.showDeleteModal} onHide={()=> this.setShowDeleteModal(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title>Deleting</Modal.Title>
@@ -73,57 +76,34 @@ export class ShelfTemplate extends React.Component {
                     </Modal>
                 </div>
                 <div className='shelf-items' > 
-                    <ul>
-                    {this.props.shelf &&
-                    this.props.shelf.categories.slice().sort((a,b) =>
-                    a.name.localeCompare(b.name)).map((cat) =>
-                    cat.products.slice().sort((a,b) =>
-                    a.product.name.localeCompare(b.product.name))
-                    .map((prod) =>
-                        <li>
-                            <div className='shelf-items-name'>
-                                {prod.product.name}
-                                {this.state.editShelf==false ?
-                                    (<MyButton 
-                                        buttonStyle='btn--dark-rev'
-                                        buttonSize='btn--small-icon'
-                                        title="Change Shelf"
-                                        onClick={()=>this.setEditShelf(true)}>
-                                        <i className="fas fa-dolly-flatbed"></i>
-                                    </MyButton>):
-                                    (<>
+                    {this.props.shelf.categories.length != 0 ?
+                        <ul>
+                        {this.props.shelf &&
+                        this.props.shelf.categories
+                            .slice()
+                            .sort((a,b) =>
+                                a.name.localeCompare(b.name))
+                            .map((cat) =>
+                                cat.products
+                                .slice()
+                                .sort((a,b) =>
+                                    a.product.name.localeCompare(b.product.name))
+                                .map((prod) =>
+                                    <li>
                                         <div className='shelf-items-name'>
-                                            <MyButton 
-                                                buttonStyle='btn--dark-rev'
-                                                buttonSize='btn--small-icon'
-                                                style={{marginLeft:"5px"}}
-                                                onClick={()=>this.setEditShelf(false)}
-                                                title="Cancel">
-                                                <i className="fas fa-times"></i>
-                                            </MyButton>
+                                            {prod.product.name}
                                         </div>
-                                        <div className='shelf-items-name'>
-                                            <select name="shelves">
-                                                <option>Pick a shelf</option>
-                                                {/* {this.state.shelfOptions.map((shelfName) => */}
-                                                <option >asdf</option>
-                                                {/* )} */}
-                                            </select>
+                                        <div style={{marginLeft:"auto"}}>
+                                            <b>{prod.amount}</b>
                                         </div>
-                                    </>)
-                                }
-                            </div>
-                            <div style={{marginLeft:"auto"}}>
-                                <b>{prod.amount}</b>
-                            </div>
-                        </li>
-                    )
-                    )}
-                    </ul>
+                                    </li>
+                                )
+                        )}
+                        </ul> :
+                        <p style={{textAlign: "center"}}>empty</p>
+                    }
                 </div>
             </div>
-            
-                
         );
     }
 }

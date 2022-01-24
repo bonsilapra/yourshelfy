@@ -18,7 +18,7 @@
     color: #CFE8E0;
 }
 
-.category-items {
+.category-items-shopping {
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -92,7 +92,7 @@
 }
 
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 800px) {
     .shop-container {
         width: 100%;
         border-radius: 0;
@@ -100,7 +100,7 @@
         border-right: none;
     }
 
-    .category-items {
+    .category-items-shopping {
         display: flex;
         flex-direction: column;
         justify-content: center;

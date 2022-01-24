@@ -1,6 +1,5 @@
 import React from 'react';
 import { ShelfTemplate } from './ShelfTemplate'
-import { NOShelfTemplate } from './NOShelfTemplate'
 import { NewShelfTemplate } from './NewShelfTemplate'
 import { MyButton } from './../button/MyButton.js';
 import MyAxios from '../../utilities/MyAxios'
@@ -47,23 +46,32 @@ class MainPage extends React.Component {
                 <h1>MY SHELVES</h1>
                 <div className='shelves-container'>
                     {this.props.shelves && 
-                    this.props.shelves.filter(function filter(a) {
-                        return a.name != null && a.name.length > 0
-                    })
-                    .sort(function compare(a, b) {
-                        return a.name.localeCompare(b.name)
-                        })
+                    this.props.shelves.filter((shelf) => shelf.isNullShelf == false)
                         .map((shelf) =>
-                            <ShelfTemplate 
+                            shelf.isShoppingList == false &&
+                                <ShelfTemplate 
                                 key={shelf.id}
                                 id={shelf.id} 
                                 name={shelf.name} 
                                 shelf={shelf}
                                 deleteShelf={this.props.deleteShelf}
+                                isNullShelf={false}
+                                />
+                        )
+                    }     
+                    {this.props.shelves && 
+                    this.props.shelves.filter((shelf) => shelf.isNullShelf == true)
+                        .map((shelf) =>
+                            <ShelfTemplate 
+                            key={shelf.id}
+                            id={shelf.id} 
+                            name="NO SHELF"
+                            shelf={shelf}
+                            deleteShelf={this.props.deleteShelf}
+                            isNullShelf={true}
                             />
                         )
-                    }         
-                    <NOShelfTemplate name="NO SHELF" />  
+                    }             
                 </div>
                 {this.state.addNewShelf==false ?
                 (<MyButton 
@@ -73,26 +81,7 @@ class MainPage extends React.Component {
                     Add new shelf <i className="fas fa-plus-circle"></i>
                 </MyButton>):
                 (<div className='shelves-container'>   
-                    <NewShelfTemplate name="New shelf" setShow={this.setAddNewShelf} addNewShelf={this.addNewShelf}/>                  
-                    {/* <div className='product-category'>
-                        <input type="text" style={{height:"1.7rem"}}/>
-                        <MyButton 
-                            buttonStyle='btn--dark'
-                            buttonSize='btn--small-icon'
-                            style={{marginLeft:"5px"}}
-                            onClick={saveNewCatName}
-                            title="Save">
-                            <i className="fas fa-check"></i>
-                        </MyButton>
-                        <MyButton 
-                            buttonStyle='btn--dark'
-                            buttonSize='btn--small-icon'
-                            style={{marginLeft:"5px"}}
-                            onClick={cancelNewCatName}
-                            title="Cancel">
-                            <i className="fas fa-times"></i>
-                        </MyButton>
-                    </div> */}
+                    <NewShelfTemplate name="New shelf" setShow={this.setAddNewShelf} addNewShelf={this.addNewShelf}/>
                 </div>)
                 }
             </div>

@@ -92,7 +92,7 @@ export function ShoppingList() {
                     </>)
                     }
                 </div>
-                <div className='category-items'>
+                <div className='category-items-shopping'>
                     {editProdName==false ?
                     (<div className='item'>
                         <MyButton 
@@ -200,12 +200,14 @@ export function ShoppingList() {
                             </MyButton>
                         </div>
                     </div>):
-                    (<MyButton 
-                        buttonStyle='btn--dark-rev'
-                        buttonSize='btn--medium'
-                        onClick={openAddProdName}>
-                        Add product <i className="fas fa-plus-circle"></i>
-                    </MyButton>)
+                    (<div>
+                        <MyButton 
+                            buttonStyle='btn--dark-rev'
+                            buttonSize='btn--medium'
+                            onClick={openAddProdName}>
+                            Add product <i className="fas fa-plus-circle"></i>
+                        </MyButton>
+                    </div>)
                 }
             </div>
             {addCategory==false ?

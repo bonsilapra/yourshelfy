@@ -69,40 +69,45 @@ export function Shelf () {
     return (
         <div className="page-container">
             <div className='shelf-head'>
-                {editShelfName==false ?
-                (<div style={{display:"flex", height:"2.8rem"}}>
-                    <h1>{selectedShelf.name}</h1>
-                    <MyButton 
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large-icon'
-                        title="Edit name"
-                        onClick={openEditShelfName}>
-                        <i className="fas fa-edit"></i>
-                    </MyButton>
-                </div>):
-                (<div style={{display:"flex", height:"2.8rem"}}>
-                    <input 
-                        type="text" 
-                        onChange={handleShefNameChange}
-                        value={inputText}
-                    />
-                    <MyButton 
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large-icon'
-                        style={{marginLeft:"5px"}}
-                        onClick={saveShelfName}
-                        title="Save">
-                        <i className="fas fa-check"></i>
-                    </MyButton>
-                    <MyButton 
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large-icon'
-                        style={{marginLeft:"5px"}}
-                        onClick={cancelShelfName}
-                        title="Cancel">
-                        <i className="fas fa-times"></i>
-                    </MyButton>
-                </div>)
+                {selectedShelf.isNullShelf==true ?
+                    (<h1>NO SHELF</h1>):
+                    (<>
+                        {editShelfName==false ?
+                            (<div style={{display:"flex", height:"2.8rem"}}>
+                                <h1>{selectedShelf.name}</h1>
+                                <MyButton 
+                                    buttonStyle='btn--primary'
+                                    buttonSize='btn--large-icon'
+                                    title="Edit name"
+                                    onClick={openEditShelfName}>
+                                    <i className="fas fa-edit"></i>
+                                </MyButton>
+                            </div>):
+                            (<div style={{display:"flex", height:"2.8rem"}}>
+                                <input 
+                                    type="text" 
+                                    onChange={handleShefNameChange}
+                                    value={inputText}
+                                />
+                                <MyButton 
+                                    buttonStyle='btn--primary'
+                                    buttonSize='btn--large-icon'
+                                    style={{marginLeft:"5px"}}
+                                    onClick={saveShelfName}
+                                    title="Save">
+                                    <i className="fas fa-check"></i>
+                                </MyButton>
+                                <MyButton 
+                                    buttonStyle='btn--primary'
+                                    buttonSize='btn--large-icon'
+                                    style={{marginLeft:"5px"}}
+                                    onClick={cancelShelfName}
+                                    title="Cancel">
+                                    <i className="fas fa-times"></i>
+                                </MyButton>
+                            </div>)
+                        }
+                    </>)
                 }
             </div>
             <div className='shelf-categories-container'>
