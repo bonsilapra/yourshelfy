@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { deleteProductAction, editProductAction, deltaProduct } from '../../features/shelf/shelfSlice';
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
-import Select from 'react-select';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './MainPage.css';
@@ -15,11 +14,6 @@ import '../shoppingList/ShoppingList.css';
 export function Product ({selectedProd,selectedCat}) {
 
     const dispatch = useDispatch()
-
-    const [changeCategory, setChangeCat]=useState(false);
-    const openChangeCat = () => setChangeCat(true);
-    // const saveCat = () => setChangeCat(false);
-    const cancelCat = () => setChangeCat(false);
 
     const [editProdName, setEditProdName]=useState(false);
     const openEditProdName = () => setEditProdName(true);
@@ -101,31 +95,6 @@ export function Product ({selectedProd,selectedCat}) {
                         onClick={openEditProdName}>
                         <i className="fas fa-edit"></i>
                     </MyButton>
-                {changeCategory==false ?
-                    (<MyButton 
-                        buttonStyle='btn--dark-rev'
-                        buttonSize='btn--small-icon'
-                        title="Change category"
-                        onClick={openChangeCat}>
-                        <i className="fas fa-boxes"></i>
-                    </MyButton>):
-                    (
-                    <>
-                        <Select 
-                            placeholder="Category" 
-                            // onChange={} 
-                            // options={}
-                        />
-                        <MyButton 
-                        buttonStyle='btn--dark-rev'
-                        buttonSize='btn--small-icon'
-                        style={{marginLeft:"5px"}}
-                        onClick={cancelCat}
-                        title="Cancel">
-                        <i className="fas fa-times"></i>
-                        </MyButton>
-                    </>)
-                }
                 </div>):
                 (<div className='item'>
                     <input 
