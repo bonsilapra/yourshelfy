@@ -1,5 +1,4 @@
-import React, { useState, useEffect }  from 'react'
-import { useParams } from "react-router-dom"
+import React, { useState }  from 'react'
 import MyAxios from '../../utilities/MyAxios'
 import { useDispatch } from 'react-redux'
 import { deleteProductAction, editProductAction, deltaProduct } from '../../features/shelf/shelfSlice';
@@ -62,7 +61,6 @@ export function Product ({selectedProd,selectedCat}) {
         })
     }
 
-    let params = useParams();
 
     return (
         <div className='category-items-shelf'>

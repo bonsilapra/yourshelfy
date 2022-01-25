@@ -28,10 +28,8 @@ export class About extends React.Component {
                     <p>
                         The creation of this website would not be possible without the help of my brother - Kuba. He spent a lot of his time teaching me the basics of programming and creating the back-end necessary for this site to function.
                     </p>
-
                 </div>
             </div>
-
         );
     }
 

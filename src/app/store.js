@@ -1,7 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
 import { createStore, combineReducers } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage/session' 
 import { counterReducer } from '../features/counter/counterSlice'
 import { userReducer } from '../features/user/userSlice'
 import { shelfReducer } from '../features/shelf/shelfSlice'

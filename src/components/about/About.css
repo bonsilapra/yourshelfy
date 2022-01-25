@@ -1,3 +1,8 @@
+:root {
+    --secondary: #2E403A;
+    --secondary-light: #CFE8E0;
+}
+
 .about-container {
     display: flex;
     flex-direction: column;
@@ -6,8 +11,8 @@
     align-items: center;
     width: 70vw;
     padding: 1rem;
-    border: 3px solid #2E403A;
-    background-color: #CFE8E0;
+    border: 3px solid var(--secondary);
+    background-color: var(--secondary-light);
     border-radius: 5px;
 }
 

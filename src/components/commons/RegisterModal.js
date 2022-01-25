@@ -25,7 +25,6 @@ export class RegisterModal extends React.Component {
         };
     }
 
-
     handleEmail(event) {
         this.setState(
             {
@@ -86,14 +85,12 @@ export class RegisterModal extends React.Component {
 
     addNewUser() {
         myAxios.post(`register`, {
-            // login: login,
             email: this.state.form.email,
             password: this.state.form.password
         })
             .then((response) => {
                 alert("Succes!");
                 this.props.setOpen(false);
-
             })
             .catch((error) => {
                 console.log(error);
@@ -148,8 +145,14 @@ export class RegisterModal extends React.Component {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.props.setOpen(false)}>Exit</Button>
-                        <Button type="submit" 
+                        <Button 
+                            variant="secondary" 
+                            onClick={() => this.props.setOpen(false)}
+                        >
+                            Exit
+                        </Button>
+                        <Button 
+                            type="submit" 
                             disabled={
                                 this.state.isInvalid.email || 
                                 this.state.isInvalid.password || 
@@ -157,7 +160,10 @@ export class RegisterModal extends React.Component {
                                 !this.state.form.email.length || 
                                 !this.state.form.password.length || 
                                 !this.state.form.repPassword.length
-                            } variant="primary" onClick={() => this.addNewUser()}>
+                            } 
+                            variant="primary" 
+                            onClick={() => this.addNewUser()}
+                        >
                             Register
                         </Button>
                     </Modal.Footer>

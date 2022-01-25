@@ -1,5 +1,11 @@
+:root {
+  --primary: #009463;
+  --primary-light: #E0FFF5;
+  --secondary: #2E403A;
+  --secondary-light: #CFE8E0;
+  --text: #24010C;
+}
 
-  
   .btn {
     padding: 5px 20px;
     border-radius: 5px;
@@ -10,39 +16,39 @@
   }
   
   .btn--primary {
-    background-color: #E0FFF5;
-    color: #009463;
-    border: 3px solid #E0FFF5;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border: 3px solid var(--primary-light);
   }
 
   .btn--primary-rev {
-    background-color: #009463;
-    color: #E0FFF5;
-    border: 3px solid #009463;
+    background-color: var(--primary);
+    color: var(--primary-light);
+    border: 3px solid var(--primary);
   }
   
   .btn--outline {
-    background-color: #009463;
-    color:#E0FFF5;
+    background-color: var(--primary);
+    color:var(--primary-light);
     padding: 5px 20px;
-    border: 3px solid #E0FFF5;
+    border: 3px solid var(--primary-light);
     transition: all 0.5s ease-out;
   }
 
   .btn--dark {
-    background-color: #2E403A;
-    color: #CFE8E0;
-    border: 3px solid #2E403A;
+    background-color: var(--secondary);
+    color: var(--secondary-light);
+    border: 3px solid var(--secondary);
   }
 
   .btn--dark-rev {
-    background-color:#CFE8E0;
-    color: #2E403A;
+    background-color:var(--secondary-light);
+    color: var(--secondary);
   }
   
   .btn--light-rev {
-    background-color:#E0FFF5;
-    color: #009463;
+    background-color:var(--primary-light);
+    color: var(--primary);
   }
   
   .btn--small {
@@ -83,19 +89,19 @@
   .btn--primary:hover,
   .btn--outline:hover {
     transition: all 0.5s ease-out;
-    background: #E0FFF5;
-    color: #24010C;
-    text-shadow: 0 0 10px #009463;
+    background: var(--primary-light);
+    color: var(--text);
+    text-shadow: 0 0 10px var(--primary);
   }
   
   .btn--dark:hover {
     transition: all 0.5s ease-out;
-    color: #24010C;
-    text-shadow: 0 0 8px #CFE8E0;
+    color: var(--text);
+    text-shadow: 0 0 8px var(--secondary-light);
   }
 
   .btn--dark-rev:hover {
     transition: all 0.5s ease-out;
-    color: #24010C;
-    text-shadow: 0 0 8px #009463;
+    color: var(--text);
+    text-shadow: 0 0 8px var(--primary);
   }

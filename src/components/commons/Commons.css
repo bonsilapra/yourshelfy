@@ -1,6 +1,12 @@
+:root {
+    --primary: #009463;
+    --primary-light: #E0FFF5;
+    --text: #24010C;
+}
+
 .page-container {
     min-height: calc(100vh - 60px);
-    padding-bottom: 0.5rem;
+    padding-bottom: 2rem;
     padding-top: 90px;
     width: 100%;
     display: flex;
@@ -8,19 +14,19 @@
     text-align: center;
     align-items: center;
     object-fit: contain;
-    background-color: #E0FFF5;
-    color: #24010C;
+    background-color: var(--primary-light);
+    color: var(--text);
 }
 
 .link-main {
     text-decoration: none;
-    color: #009463;
+    color: var(--primary);
     font-size: large;
     font-weight: 600;
 }
 
 .link-main:hover {
     transition: all 0.5s ease-out;
-    color: #24010C;
-    text-shadow: 0 0 10px #009463;
+    color: var(--text);
+    text-shadow: 0 0 10px var(--primary);
 }

@@ -1,10 +1,18 @@
+:root {
+    --primary: #009463;
+    --primary-light: #E0FFF5;
+    --secondary: #2E403A;
+    --secondary-light: #CFE8E0;
+    --text: #24010C;
+}
+
 .shelves-container {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     width: 95vw;
     justify-content: center;
-    color: #24010C
+    color: var(--text)
 }
 
 .shelf-container {
@@ -13,8 +21,8 @@
     width: 400px;
     min-height: 150px;
     margin: 0.7rem;
-    border: 3px solid #2E403A;
-    background-color: #CFE8E0;
+    border: 3px solid var(--secondary);
+    background-color: var(--secondary-light);
     border-radius: 5px;
 }
 
@@ -24,7 +32,7 @@
     /* min-height: 150px; */
     margin: 0;
     padding: 0;
-    background-color: #E0FFF5;
+    background-color: var(--primary-light);
 }
 
 .no-shelf-container {
@@ -33,8 +41,8 @@
     width: 400px;
     min-height: 100px;
     margin: 0.7rem;
-    border: 3px solid #009463;
-    background-color: #E0FFF5;
+    border: 3px solid var(--primary);
+    background-color: var(--primary-light);
     border-radius: 5px;
 }
 
@@ -43,7 +51,7 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-    background-color: #2E403A;
+    background-color: var(--secondary);
     text-align: center;
     font-size: larger;
 }
@@ -51,7 +59,7 @@
 .no-shelf-name {
     justify-content: center;
     padding: 5px;
-    background-color: #009463;
+    background-color: var(--primary);
     text-align: center;
     font-size: larger;
 
@@ -59,19 +67,19 @@
 
 .shelf-name a {
     text-decoration: none;
-    color: #CFE8E0;
+    color: var(--secondary-light);
     font-size: larger;
 }
 
 .no-shelf-name a {
     text-decoration: none;
-    color: #E0FFF5;
+    color: var(--primary-light);
     font-size: larger;
 }
 
 .shelf-name a:hover,
 .no-shelf-name a:hover {
-    color: #24010C;
+    color: var(--text);
     transition: 0.5s ease-in-out;
 }
 
@@ -79,7 +87,7 @@
     justify-content: left;
     padding: 10px;
     text-align: left;
-    color: #24010C;
+    color: var(--text);
     font-size: large;
 }
 
@@ -130,7 +138,7 @@
     flex-direction: row;
     justify-content: left;
     text-align: left;
-    color: #24010C;
+    color: var(--text);
 }
 
 

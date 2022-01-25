@@ -1,12 +1,10 @@
-import React, { useState, useEffect }  from 'react'
-import { useParams } from "react-router-dom"
+import React, { useState }  from 'react'
 import MyAxios from '../../utilities/MyAxios'
 import { useDispatch } from 'react-redux'
 import { deleteCategoryAction, editCategoryAction, addProductAction } from '../../features/shelf/shelfSlice';
 import '../commons/Commons.css';
 import { MyButton } from './../button/MyButton.js';
 import { Product } from './Product.js';
-import Select from 'react-select';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './MainPage.css';
@@ -72,7 +70,6 @@ export function Category ({selectedCat}) {
         })
     }
 
-    let params = useParams();
 
     let arrayForSort = [...selectedCat.products]
 

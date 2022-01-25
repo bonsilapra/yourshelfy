@@ -89,7 +89,7 @@ export class ShelfTemplate extends React.Component {
                                 .sort((a,b) =>
                                     a.product.name.localeCompare(b.product.name))
                                 .map((prod) =>
-                                    <li>
+                                    <li key={prod.product.id}>
                                         <div className='shelf-items-name'>
                                             {prod.product.name}
                                         </div>

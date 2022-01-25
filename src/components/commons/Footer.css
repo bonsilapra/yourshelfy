@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+:root {
+    --primary: #009463;
+    --primary-light: #E0FFF5;
+    --secondary: #2E403A;
+    --secondary-light: #CFE8E0;
+    --text: #24010C;
+}
+
 .footer-container {
-    background-color: #009463;
+    background-color: var(--primary);
     bottom: 0;
     width: 100%;
     height: 60px;
@@ -10,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #E0FFF5;
+    color: var(--primary-light);
 }
 
 .footer-links {
@@ -30,14 +38,14 @@
 
 .footer-link-wrapper  a {
     text-decoration: none;
-    color: #E0FFF5;
+    color: var(--primary-light);
     font-family: 'Lobster', cursive ;
     font-weight: 400;
     padding: 0;
 }
 
 .footer-link-wrapper a:hover {
-    color: #24010C;
+    color: var(--text);
     transition: 0.5s ease-in-out;
 } 
 
@@ -45,43 +53,3 @@
     font-size: 12px;
 }
 
-/* .footer-link-items {
-    display: flex;
-    flex-direction: row;
-    max-width: 1200px;
-    margin: 10px;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-
-.footer-link-items a {
-    color: #F2F2F2;
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    margin-left: 2vw;
-    margin-right: 2vw;
-}
-
-.footer-link-items a:hover {
-    color: #7283A6;
-    transition: 0.3s ease-out;
-}   */
-
-
-/* @media screen and (max-width: 1035px) {
-
-    .footer-link-items {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        width: 160px;
-        box-sizing: border-box;
-        font-size: 1rem;
-    }
-
-    .footer-link-wrapper {
-        flex-direction: column;
-    }
-
-} */

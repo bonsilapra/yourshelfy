@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+:root {
+    --primary: #009463;
+    --primary-light: #E0FFF5;
+    --text: #24010C;
+}
 
 .navbar {
     padding-left: 10px;
@@ -9,13 +14,13 @@
     opacity: 95%;
     line-height: 100%;
     text-align: center;
-    background-color: #009463 !important;
+    background-color: var(--primary) !important;
     min-width: 100%;
     padding: 10px 0 10px 0;
 }
 
 .navbar-logo {
-    color: #E0FFF5 !important;
+    color: var(--primary-light) !important;
     font-family: 'Lobster', cursive ;
     font-weight: 400;
     justify-self: start;
@@ -36,7 +41,7 @@
 }
 
 .navbar-logo:hover {
-    color: #24010C !important;
+    color: var(--text) !important;
     transition: 0.5s ease-in-out;
 }
 
@@ -49,16 +54,16 @@
 }
 
 .navbar-light .navbar-nav .nav-link  {
-    color: #E0FFF5;
+    color: var(--primary-light);
 }
 
 .navbar-light:hover .navbar-nav:hover .nav-link:hover {
-    color: #24010C;
+    color: var(--text);
     transition: 0.5s ease-in-out;
 }
 
 .navbar-light:hover .navbar-nav:hover .nav-link:hover {
-    color: #24010C;
+    color: var(--text);
     transition: 0.5s ease-in-out;
 }
 
@@ -76,7 +81,7 @@
     font-family: 'Lobster', cursive ;
     font-weight: 400;
     font-size: larger;
-    color: #E0FFF5
+    color: var(--primary-light)
 }
 
 
@@ -100,7 +105,7 @@
         display: block;
         flex-direction: column;
         align-items: center;
-        background: #009463;
+        background: var(--primary);
         left: 0;
         transition: all 0.5s ease;
         z-index: 1;
@@ -108,7 +113,7 @@
     }
 
     .menu-icon {
-        color: #E0FFF5 ;
+        color: var(--primary-light) ;
         display: block;
         margin-left: auto;
         padding-right: 10px;
@@ -117,14 +122,14 @@
     }
 
     .menu-icon:hover {
-        color: #24010C;
+        color: var(--text);
         transition: 0.3s ease-out;
     }
 
 
 
     .navbar-light:hover .navbar-nav:hover .nav-link:hover {
-        background-color: #E0FFF5;
+        background-color: var(--primary-light);
         transition: 0.3s ease-out;
     }
 

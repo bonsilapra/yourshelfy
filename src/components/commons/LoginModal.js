@@ -67,8 +67,6 @@ class LoginModal extends React.Component {
         )
     }
 
-    
-
     login() {
         MyAxios.post(`login`, {
             email: this.state.form.email,
@@ -80,8 +78,7 @@ class LoginModal extends React.Component {
                 MyAxios.get(`shelf`)
                 .then(res => {
                     this.props.getShelves(res.data);
-                    }
-                )
+                })
             })
             .catch((error) => {
                 console.log(error);
@@ -124,14 +121,24 @@ class LoginModal extends React.Component {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.props.setOpen(false)}>Exit</Button>
-                        <Button type="submit" 
+                        <Button 
+                            variant="secondary" 
+                            onClick={() => this.props.setOpen(false)}
+                        >
+                            Exit
+                        </Button>
+                        <Button 
+                            type="submit" 
                             disabled={
                                 this.state.isInvalid.email || 
                                 this.state.isInvalid.password || 
                                 !this.state.form.email.length || 
                                 !this.state.form.password.length
-                            } variant="primary" className={"primaryButton"} onClick={() => this.login()}>
+                            } 
+                            variant="primary" 
+                            className={"primaryButton"} 
+                            onClick={() => this.login()}
+                        >
                             Log in
                         </Button>
                     </Modal.Footer>
