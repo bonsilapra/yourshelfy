@@ -120,7 +120,32 @@ export const shelfSlice = createSlice({
                 return value
             });
         },
-        
+        addToShoppingListAction: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                if (value.isShoppingList == true) {
+                    let doesCategoryExist = false
+                    value.categories.map((cat) => {
+                        if (cat.id != action.payload.id) {
+                            return cat
+                        } else {
+                            doesCategoryExist = true
+                            cat.products = action.payload.products
+                            return cat
+                        }
+                    });
+                    if (doesCategoryExist == false) {
+                        value.categories = [...value.categories, action.payload]
+                    }
+                } 
+                return value
+            })
+        },
+        clearShoppingListAction: (state, action) => {
+            state.shelves = state.shelves.map((value) => {
+                value.categories = value.categories.filter((shelf) => shelf.id !== action.payload)
+                return value
+            });
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(logoutUser, (state, action) => {
@@ -140,7 +165,9 @@ export const {
     addProductAction,
     deleteProductAction,
     editProductAction,
-    deltaProduct
+    deltaProduct,
+    addToShoppingListAction,
+    clearShoppingListAction
 } = shelfSlice.actions
 
 export const shelfReducer = shelfSlice.reducer

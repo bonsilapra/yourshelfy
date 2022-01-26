@@ -72,7 +72,7 @@ export function Category ({selectedCat}) {
     let arrayForSort = [...selectedCat.products]
 
     return (
-        <div className='shop-container'>
+        <div className='shelf-category-container'>
             <div className='product-category' >
                 {editCategory==false ?
                     (<>
@@ -82,15 +82,17 @@ export function Category ({selectedCat}) {
                             buttonSize='btn--small-icon'
                             style={{marginLeft:"5px"}}
                             title="Edit name"
-                            onClick={openEditCatName}>
+                            onClick={openEditCatName}
+                        >
                             <i className="fas fa-edit"></i>
                         </MyButton>
                         <MyButton 
-                                buttonStyle='btn--dark'
-                                buttonSize='btn--small-icon'
-                                title="Remove"
-                                onClick={() => setShowDeleteModal(true)}>
-                                <i className="fas fa-trash-alt"></i>
+                            buttonStyle='btn--dark'
+                            buttonSize='btn--small-icon'
+                            title="Remove"
+                            onClick={() => setShowDeleteModal(true)}
+                        >
+                            <i className="fas fa-trash-alt"></i>
                         </MyButton>
                     </>):
                     (<>
@@ -105,7 +107,8 @@ export function Category ({selectedCat}) {
                             buttonSize='btn--small-icon'
                             style={{marginLeft:"5px"}}
                             onClick={()=> saveCatName(selectedCat.id)}
-                            title="Save">
+                            title="Save"
+                        >
                             <i className="fas fa-check"></i>
                         </MyButton>
                         <MyButton 
@@ -113,7 +116,8 @@ export function Category ({selectedCat}) {
                             buttonSize='btn--small-icon'
                             style={{marginLeft:"5px"}}
                             onClick={cancelCatName}
-                            title="Cancel">
+                            title="Cancel"
+                        >
                             <i className="fas fa-times"></i>
                         </MyButton>
                     </>)
@@ -154,7 +158,8 @@ export function Category ({selectedCat}) {
                                 buttonSize='btn--small-icon'
                                 style={{marginLeft:"5px"}}
                                 onClick={saveNewProdName}
-                                title="Save">
+                                title="Save"
+                            >
                                 <i className="fas fa-check"></i>
                             </MyButton>
                             <MyButton 
@@ -162,7 +167,8 @@ export function Category ({selectedCat}) {
                                 buttonSize='btn--small-icon'
                                 style={{marginLeft:"5px"}}
                                 onClick={cancelNewProdName}
-                                title="Cancel">
+                                title="Cancel"
+                            >
                                 <i className="fas fa-times"></i>
                             </MyButton>
                         </div>

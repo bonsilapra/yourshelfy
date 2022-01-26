@@ -18,19 +18,28 @@ export class GetListModal extends React.Component {
                     <Modal.Body>
                         <div id="elem" className='section-to-print-modal'>
                             <h1 style={{textAlign:"center"}}>MY SHOPPING LIST</h1>
-                            <div className='list-container'>                     
-                                <div className='product-category'>
-                                    Kategoria 1
-                                </div>
-                                <div className='item-category-items'>
-                                    <div className='item-name'>
-                                        <p>Pieczarki</p>
+                            {this.props.selectedShelf && this.props.selectedShelf.categories &&
+                            this.props.selectedShelf.categories.length !=0 &&
+                            this.props.arrayForSort
+                            .sort((a,b) =>
+                                a.name.localeCompare(b.name))
+                            .map((cat) =>  
+                                <div className='list-container'>                   
+                                    <div key={cat.id} className='product-category'>
+                                        {cat.name}
                                     </div>
-                                    <div className='item-options'>
-                                        <p><b>ilość</b></p>
-                                    </div>
+                                    {cat.products.map((product) =>
+                                        <div key={product.product.id} className='item-category-items'>
+                                            <div className='item-name'>
+                                                <p>{product.product.name}</p>
+                                            </div>
+                                            <div className='item-options'>
+                                                <p><b>{product.amount}</b></p>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </Modal.Body>
                     <Modal.Footer>

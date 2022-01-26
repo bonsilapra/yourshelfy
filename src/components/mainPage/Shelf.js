@@ -7,7 +7,6 @@ import { MyButton } from './../button/MyButton.js';
 import { Category } from './Category.js';
 import { editShelf, addCategoryAction } from '../../features/shelf/shelfSlice';
 import './MainPage.css';
-import '../shoppingList/ShoppingList.css';
 
 
 export function Shelf () {
@@ -133,7 +132,7 @@ export function Shelf () {
                     >
                         Add category <i className="fas fa-plus-circle"></i>
                     </MyButton>):
-                    (<div className='shop-container'>                     
+                    (<div className='shelf-category-container'>                     
                         <div className='product-category'>
                             <input 
                                 type="text" 

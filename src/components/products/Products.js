@@ -4,6 +4,8 @@ import '../commons/Commons.css';
 import LoginModal from '../commons/LoginModal.js';
 import { RegisterModal } from '../commons/RegisterModal.js';
 import { MyButton } from './../button/MyButton.js';
+import MyAxios from '../../utilities/MyAxios'
+import { addToShoppingListAction } from '../../features/shelf/shelfSlice';
 import './Products.css';
 
 
@@ -18,13 +20,17 @@ class Products extends React.Component {
             editProdName: false,
             products: {},
             showRegister: false,
-            showLogin: false
+            showLogin: false,
+            showingAlert: false,
+            showingAlertError: false
         }
         this.setEditCatName = this.setEditCatName.bind(this);
         this.setChangeCat = this.setChangeCat.bind(this);
         this.setEditProdName = this.setEditProdName.bind(this);
         this.showRegisterModal = this.showRegisterModal.bind(this);
         this.showLoginModal = this.showLoginModal.bind(this);
+        this.handleClickShowAlert = this.handleClickShowAlert.bind(this)
+        this.handleClickShowAlertError = this.handleClickShowAlertError.bind(this)
     }
 
     setEditCatName(editCatName) {
@@ -84,10 +90,54 @@ class Products extends React.Component {
         this.setState({ products: this.makeProducts(this.props.shelves)})
     }
 
+    addToShoppingList(productId, categoryName) {
+        MyAxios.post(`category/addProductToShoppingList/`, {
+            productId: productId,
+            categoryName: categoryName
+        })
+        .then((response) => {
+            this.props.addToShoppingListAction(response.data);
+            this.handleClickShowAlert()
+        })
+        .catch((error) => {
+            this.handleClickShowAlertError()
+            console.log(error);
+        });
+    }
+
+    handleClickShowAlert() {
+        this.setState({
+            showingAlert: true
+        });
+        setTimeout(() => {
+            this.setState({
+                showingAlert: false
+            });
+        }, 1500);
+    }
+
+    handleClickShowAlertError() {
+        this.setState({
+            showingAlertError: true
+        });
+        setTimeout(() => {
+            this.setState({
+                showingAlertError: false
+            });
+        }, 1500);
+    }
+
+
     render() { 
         return (
             <div className="page-container" >
                 <h1>MY PRODUCTS</h1>
+                    <div className={ this.state.showingAlert ? 'alert-shown' : 'alert-hidden'}>
+                        <strong>Added to the shopping list!</strong> 
+                    </div>
+                    <div className={ this.state.showingAlertError ? 'alert-shown-err' : 'alert-hidden-err'}>
+                        <strong>Product is already on the shopping list!</strong> 
+                    </div>
                 {this.props.user ?
                     <>
                         {this.state.products &&
@@ -112,6 +162,7 @@ class Products extends React.Component {
                                                 buttonSize='btn--small-icon'
                                                 style={{marginLeft:"10px"}}
                                                 title="Add to Shopping list"
+                                                onClick={() => this.addToShoppingList(item.product.id, categoryName)}
                                             >
                                                 <i className="fas fa-shopping-basket"></i>
                                             </MyButton>
@@ -152,6 +203,6 @@ const mapStateToProps = (state) => ({
     user: state.user
 });
 
-const mapDispatchToProps = {  };
+const mapDispatchToProps = { addToShoppingListAction };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

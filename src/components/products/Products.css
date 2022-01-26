@@ -1,4 +1,6 @@
 :root {
+    --primary: #009463;
+    --primary-light: #E0FFF5;
     --secondary: #2E403A;
     --secondary-light: #CFE8E0;
     --text: #24010C;
@@ -58,6 +60,53 @@
 .amount p {
     margin: 0;
     font-size: large;
+}
+
+
+.alert-shown {
+    position: fixed;
+    padding: 10px;
+    color: var(--primary);
+    background-color: var(--primary-light);
+    border: 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--primary);
+    opacity: 1;
+}
+
+.alert-hidden {
+    position: fixed;
+    padding: 10px;
+    color: var(--primary);
+    background-color: var(--primary-light);
+    border: 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--primary);
+    opacity: 0;
+    transition: opacity 1.5s linear 0.2s;
+}
+
+.alert-shown-err {
+    position: fixed;
+    padding: 10px;
+    color: var(--text);
+    background-color: #dfb3c1;
+    border: 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--text);
+    opacity: 1;
+}
+
+.alert-hidden-err {
+    position: fixed;
+    padding: 10px;
+    color: var(--text);
+    background-color: #dfb3c1;
+    border: 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--text);
+    opacity: 0;
+    transition: opacity 1.5s linear 0.2s;
 }
 
 @media screen and (max-width: 800px) {

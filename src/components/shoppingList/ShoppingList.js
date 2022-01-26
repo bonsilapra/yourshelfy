@@ -1,5 +1,4 @@
-import React, { useState, useEffect }  from 'react'
-// import { useParams } from "react-router-dom"
+import React, { useState }  from 'react'
 import MyAxios from '../../utilities/MyAxios';
 // import { Link } from 'react-router-dom'
 import '../commons/Commons.css';
@@ -7,35 +6,64 @@ import { MyButton } from './../button/MyButton.js';
 import { GetListModal } from './GetListModal.js';
 import { RegisterModal } from '../commons/RegisterModal.js';
 import  LoginModal  from '../commons/LoginModal.js';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { addCategoryAction, clearShoppingListAction } from '../../features/shelf/shelfSlice';
+import { Category } from '../mainPage//Category.js';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import './ShoppingList.css';
+import '../mainPage/MainPage.css';
+
 
 
 export function ShoppingList() {
 
-    const [editCategory, setEditCatName] = useState(false);
-    const openEditCatName = () => setEditCatName(true);
-    const saveCatName = () => setEditCatName(false);
-    const cancelCatName = () => setEditCatName(false);
+    const selectedShelf = useSelector((state) => {
+        if (state.shelf.shelves && state.shelf.shelves.filter((shelf) => shelf.isShoppingList == true)) {
+            return state.shelf.shelves.filter((shelf) => shelf.isShoppingList == true)[0]
+        } else { 
+            return null
+        }
+    })
 
-    const [editProdName, setEditProdName] = useState(false);
-    const openEditProdName = () => setEditProdName(true);
-    const saveProdName = () => setEditProdName(false);
-    const cancelProdName = () => setEditProdName(false);
+    let arrayForSort = [...selectedShelf.categories]
 
-    const [addProdName, setAddProdName] = useState(false);
-    const openAddProdName = () => setAddProdName(true);
-    const saveNewProdName = () => setAddProdName(false);
-    const cancelNewProdName = () => setAddProdName(false);
+    const dispatch = useDispatch()
 
     const [addCategory, setAddCatName] = useState(false);
     const openAddCatName = () => setAddCatName(true);
-    const saveNewCatName = () => setAddCatName(false);
+    const [inputCatName, setInputCatname] = useState("");
+    const handleCatNameChange = (event) => {
+        setInputCatname(event.target.value)
+    }
+    const saveNewCatName = () => {
+        MyAxios.post(`category/create`, {shelfId: selectedShelf.id, name: inputCatName})
+        .then(response => {
+            dispatch(addCategoryAction({shelfId: selectedShelf.id, newCat: response.data}));
+            setAddCatName(false);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
     const cancelNewCatName = () => setAddCatName(false);
 
     const [showGetList, setGetList] = useState(false);
 
     const showGetListModal = () => setGetList(!showGetList);
+
+    const [showClearModal, setShowClearModal] = useState(false);
+    const handleClear = () => {
+        for (let i = 0; i < arrayForSort.length; i++) {
+            MyAxios.delete(`category/delete/${arrayForSort[i].id}`)
+            .then(response => {
+                dispatch(clearShoppingListAction(arrayForSort[i].id));
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+    }
 
     const user = useSelector((state) => state.user)
 
@@ -50,197 +78,91 @@ export function ShoppingList() {
             <h1>MY SHOPPING LIST</h1>
             {user!=null ?
                 <>
-                    <GetListModal show={showGetList} setOpen={showGetListModal}/>
-                    <MyButton 
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large'
-                        onClick={() => {showGetListModal()}}
-                    >
-                        Get the shopping list! <i className="fas fa-list-alt"></i>
-                    </MyButton>
+                    {selectedShelf.categories.length != 0 &&
+                        <>
+                            <GetListModal 
+                                show={showGetList} 
+                                setOpen={showGetListModal}
+                                selectedShelf={selectedShelf}
+                                arrayForSort={arrayForSort}
+                            />
+                            <MyButton 
+                                buttonStyle='btn--primary'
+                                buttonSize='btn--large'
+                                onClick={() => {showGetListModal()}}
+                            >
+                                Get the shopping list! <i className="fas fa-list-alt"></i>
+                            </MyButton>
+                            <MyButton 
+                                buttonStyle='btn--primary'
+                                buttonSize='btn--large'
+                                onClick={() => setShowClearModal(true)}
+                            >
+                                Clear the shopping list <i className="fas fa-ban"></i>
+                            </MyButton>
+                        </>
+                    }
+                    <Modal show={showClearModal} onHide={()=> setShowClearModal(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Clearing the shopping list</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <p>Are you sure you want to clear the shopping list?</p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={()=> setShowClearModal(false)}>No</Button>
+                            <Button variant="primary" onClick={()=> {handleClear(); setShowClearModal(false)}}>Yes, clear</Button>
+                        </Modal.Footer>
+                    </Modal>
                     {/* <Link className = "link-main" to={"/listComp"}>Get the shopping list! <i className="fas fa-list-alt"></i> </Link> */}
-                    <div className='shop-container'>                     
-                        <div className='product-category'>
-                        {editCategory==false ?
-                            <>
-                                Kategoria 1
-                                <MyButton 
-                                    buttonStyle='btn--dark'
-                                    buttonSize='btn--small-icon'
-                                    style={{marginLeft:"5px"}}
-                                    title="Edit name"
-                                    onClick={openEditCatName}
-                                >
-                                    <i className="fas fa-edit"></i>
-                                </MyButton>
-                                <MyButton 
-                                    buttonStyle='btn--dark'
-                                    buttonSize='btn--small-icon'
-                                    title="Remove"
-                                >
-                                    <i className="fas fa-trash-alt"></i>
-                                </MyButton>
-                            </>:
-                            <>
-                                <input type="text" style={{height:"1.7rem"}}/>
-                                <MyButton 
-                                    buttonStyle='btn--dark'
-                                    buttonSize='btn--small-icon'
-                                    style={{marginLeft:"5px"}}
-                                    onClick={saveCatName}
-                                    title="Save"
-                                >
-                                    <i className="fas fa-check"></i>
-                                </MyButton>
-                                <MyButton 
-                                    buttonStyle='btn--dark'
-                                    buttonSize='btn--small-icon'
-                                    style={{marginLeft:"5px"}}
-                                    onClick={cancelCatName}
-                                    title="Cancel"
-                                >
-                                    <i className="fas fa-times"></i>
-                                </MyButton>
-                            </>
-                        }
-                        </div>
-                        <div className='category-product-list-shop'>
-                            <div className='category-items-shopping'>
-                                {editProdName==false ?
-                                    (<div className='item'>
-                                        <MyButton 
-                                            buttonStyle='btn--dark-rev'
-                                            buttonSize='btn--small-icon'
-                                            title="Remove"
-                                        >
-                                            <i className="fas fa-trash-alt"></i>
-                                        </MyButton>
-                                        <h4 style={{padding:"5px"}}>Pieczarki</h4>
-                                        <MyButton 
-                                            buttonStyle='btn--dark-rev'
-                                            buttonSize='btn--small-icon'
-                                            title="Edit name"
-                                            onClick={openEditProdName}
-                                        >
-                                            <i className="fas fa-edit"></i>
-                                        </MyButton>
-                                    </div>):
-                                    (<div className='item'>
-                                        <input type="text" style={{height:"2rem", marginLeft:"5px"}}/>
-                                        <MyButton 
-                                            buttonStyle='btn--dark-rev'
-                                            buttonSize='btn--small-icon'
-                                            style={{marginLeft:"5px"}}
-                                            onClick={saveProdName}
-                                            title="Save"
-                                        >
-                                            <i className="fas fa-check"></i>
-                                        </MyButton>
-                                        <MyButton 
-                                            buttonStyle='btn--dark-rev'
-                                            buttonSize='btn--small-icon'
-                                            style={{marginLeft:"5px"}}
-                                            onClick={cancelProdName}
-                                            title="Cancel"
-                                        >
-                                            <i className="fas fa-times"></i>
-                                        </MyButton>
-                                    </div>)
-                                }
-                                <div className='options'>
-                                    <MyButton 
-                                        buttonStyle='btn--dark-rev'
-                                        buttonSize='btn--small-icon'
-                                        title="Subtract"
-                                    >
-                                        <i className="fas fa-minus"></i>
-                                    </MyButton>
-                                    <p><b>ilość</b></p>
-                                    <MyButton 
-                                        buttonStyle='btn--dark-rev'
-                                        buttonSize='btn--small-icon'
-                                        title="Add"
-                                    >
-                                        <i className="fas fa-plus"></i>
-                                    </MyButton>
-                                    <p> Amount: </p>
-                                    <input type="number" style={{width:"50px", marginRight:"10px"}}></input>
+                    <div className='shelf-categories-container'>
+                        {selectedShelf && selectedShelf.categories &&
+                        selectedShelf.categories.length !=0 &&
+                        arrayForSort
+                        .sort((a,b) =>
+                            a.name.localeCompare(b.name))
+                        .map((cat) =>   
+                            <Category key={cat.id} selectedCat={cat} />
+                        )}
+                    </div>
+                    <div className='add-category'>
+                        {addCategory==false ?
+                            (<MyButton 
+                            buttonStyle='btn--primary'
+                            buttonSize='btn--large'
+                            onClick={openAddCatName}
+                            >
+                                Add category <i className="fas fa-plus-circle"></i>
+                            </MyButton>):
+                            (<div className='shelf-category-container'>                     
+                                <div className='product-category'>
+                                    <input 
+                                        type="text" 
+                                        style={{height:"1.7rem"}}
+                                        onChange={handleCatNameChange}
+                                    />
                                     <MyButton 
                                         buttonStyle='btn--dark'
-                                        buttonSize='btn--small'
-                                    >
-                                        Add
-                                    </MyButton>
-                                </div>
-                            </div>
-                        </div>
-                        {addProdName==true ?
-                            (<div className='category-items'>
-                                <div className='item'>
-                                    <input type="text" style={{height:"2rem"}}/>
-                                    <MyButton 
-                                        buttonStyle='btn--dark-rev'
                                         buttonSize='btn--small-icon'
                                         style={{marginLeft:"5px"}}
-                                        onClick={saveNewProdName}
+                                        onClick={saveNewCatName}
                                         title="Save"
                                     >
                                         <i className="fas fa-check"></i>
                                     </MyButton>
                                     <MyButton 
-                                        buttonStyle='btn--dark-rev'
+                                        buttonStyle='btn--dark'
                                         buttonSize='btn--small-icon'
                                         style={{marginLeft:"5px"}}
-                                        onClick={cancelNewProdName}
+                                        onClick={cancelNewCatName}
                                         title="Cancel"
                                     >
                                         <i className="fas fa-times"></i>
                                     </MyButton>
                                 </div>
-                            </div>):
-                            (<div>
-                                <MyButton 
-                                    buttonStyle='btn--dark-rev'
-                                    buttonSize='btn--medium'
-                                    onClick={openAddProdName}
-                                >
-                                    Add product <i className="fas fa-plus-circle"></i>
-                                </MyButton>
                             </div>)
                         }
-                    </div>
-                    {addCategory==false ?
-                        (<MyButton 
-                            buttonStyle='btn--primary'
-                            buttonSize='btn--large'
-                            onClick={openAddCatName}
-                        >
-                            Add category <i className="fas fa-plus-circle"></i>
-                        </MyButton>):
-                        (<div className='shop-container'>                     
-                            <div className='product-category'>
-                                <input type="text" style={{height:"1.7rem"}}/>
-                                <MyButton 
-                                    buttonStyle='btn--dark'
-                                    buttonSize='btn--small-icon'
-                                    style={{marginLeft:"5px"}}
-                                    onClick={saveNewCatName}
-                                    title="Save"
-                                >
-                                    <i className="fas fa-check"></i>
-                                </MyButton>
-                                <MyButton 
-                                    buttonStyle='btn--dark'
-                                    buttonSize='btn--small-icon'
-                                    style={{marginLeft:"5px"}}
-                                    onClick={cancelNewCatName}
-                                    title="Cancel"
-                                >
-                                    <i className="fas fa-times"></i>
-                                </MyButton>
-                            </div>
-                        </div>)
-                    }  
+                    </div> 
                 </> : 
                 <div style={{display:"flex", alignItems:"center"}}>
                     <MyButton 

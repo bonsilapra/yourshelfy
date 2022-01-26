@@ -4,27 +4,6 @@
     --text: #24010C;
 }
 
-.shop-container {
-    width: 70vw;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--secondary-light);
-    border: 3px solid var(--secondary);
-    border-radius: 5px;
-    padding: 0px;
-    margin-top: 0.7rem;
-}
-
-.product-category {
-    justify-content: center;
-    padding: 5px;
-    background-color: var(--secondary);
-    text-align: center;
-    font-size: larger;
-    color: var(--secondary-light);
-}
-
 .category-items-shopping {
     display: flex;
     flex-direction: row;
@@ -37,30 +16,6 @@
     display: flex;
     flex-direction: column;
 }
-
-.item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: center;
-}
-
-.item h4 {
-    margin: 0 0 0 0;
-}
-
-.options {
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    align-items: center;
-}
-
-.options p {
-    margin: 0;
-    padding: 8px;
-}
-
 
 /* GetListModal */
 .list-container {
@@ -129,21 +84,6 @@
         margin: 10px 0 10px 0;
     }
 
-    .item {
-        justify-content: center;
-        margin: 0;
-        height: 2rem;
-    }
-
-    .item p {
-        margin-bottom: 0;
-    }
-
-    .options {
-        justify-content: center;
-        margin: 0;
-
-    }
 }
 /* print in another component version */
 

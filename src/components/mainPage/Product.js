@@ -15,7 +15,10 @@ export function Product ({selectedProd,selectedCat}) {
     const dispatch = useDispatch()
 
     const [editProdName, setEditProdName] = useState(false);
-    const openEditProdName = () => setEditProdName(true);
+    const openEditProdName = () => {
+        setEditProdName(true);
+        setInputProdName(selectedProd.product.name)
+    }
     const [inputProdName, setInputProdName] = useState("");
     const handleProdNameChange = (event) => {
         setInputProdName(event.target.value)
@@ -98,6 +101,7 @@ export function Product ({selectedProd,selectedCat}) {
                         type="text" 
                         style={{height:"2rem", marginLeft:"5px"}}
                         onChange={handleProdNameChange}
+                        value={inputProdName}
                     />
                     <MyButton 
                         buttonStyle='btn--dark-rev'
