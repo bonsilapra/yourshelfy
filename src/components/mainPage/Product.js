@@ -14,7 +14,7 @@ export function Product ({selectedProd,selectedCat}) {
 
     const dispatch = useDispatch()
 
-    const [editProdName, setEditProdName]=useState(false);
+    const [editProdName, setEditProdName] = useState(false);
     const openEditProdName = () => setEditProdName(true);
     const [inputProdName, setInputProdName] = useState("");
     const handleProdNameChange = (event) => {
@@ -32,8 +32,7 @@ export function Product ({selectedProd,selectedCat}) {
     }
     const cancelProdName = () => setEditProdName(false);
 
-
-    const [showDeleteModal, setShowDeleteModal]=useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const handleDelete = (catID, prodID) => {
         MyAxios.delete(`category/${catID}/deleteProduct/${prodID}`)
         .then(response => {
@@ -49,7 +48,6 @@ export function Product ({selectedProd,selectedCat}) {
         setAmount(event.target.value)
     }
 
-
     const handleAmountChange = (catID, prodID, delta) => {
         MyAxios.put(`category/${catID}/changeProductAmount`, {productId: prodID, delta: parseInt(delta)})
         .then(response => {
@@ -61,7 +59,6 @@ export function Product ({selectedProd,selectedCat}) {
         })
     }
 
-
     return (
         <div className='category-items-shelf'>
             {editProdName==false ?
@@ -70,7 +67,8 @@ export function Product ({selectedProd,selectedCat}) {
                         onClick={() => setShowDeleteModal(true)}
                         buttonStyle='btn--dark-rev'
                         buttonSize='btn--small-icon'
-                        title="Remove">
+                        title="Remove"
+                    >
                         <i className="fas fa-trash-alt"></i>
                     </MyButton>
                     <Modal show={showDeleteModal} onHide={()=> setShowDeleteModal(false)}>
@@ -85,19 +83,20 @@ export function Product ({selectedProd,selectedCat}) {
                             <Button variant="primary" onClick={()=> {handleDelete(selectedCat.id, selectedProd.product.id); setShowDeleteModal(false)}}>Yes, remove</Button>
                         </Modal.Footer>
                     </Modal>
-                    <h4 key={selectedProd.product.id}style={{padding:"5px"}}>{selectedProd.product.name}</h4>
+                    <h4 key={selectedProd.product.id} style={{padding:"5px"}}>{selectedProd.product.name}</h4>
                     <MyButton 
                         buttonStyle='btn--dark-rev'
                         buttonSize='btn--small-icon'
                         title="Edit name"
-                        onClick={openEditProdName}>
+                        onClick={openEditProdName}
+                    >
                         <i className="fas fa-edit"></i>
                     </MyButton>
                 </div>):
                 (<div className='item'>
                     <input 
                         type="text" 
-                        style={{height:"2rem"}}
+                        style={{height:"2rem", marginLeft:"5px"}}
                         onChange={handleProdNameChange}
                     />
                     <MyButton 

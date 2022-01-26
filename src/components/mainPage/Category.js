@@ -15,7 +15,7 @@ export function Category ({selectedCat}) {
 
     const dispatch = useDispatch()
 
-    const [editCategory, setEditCatName]=useState(false);
+    const [editCategory, setEditCatName] = useState(false);
     const openEditCatName = () => {
         setEditCatName(true);
         setInputCatname(selectedCat.name)
@@ -38,7 +38,7 @@ export function Category ({selectedCat}) {
     }
     const cancelCatName = () => setEditCatName(false);
 
-    const [addProdName, setAddProdName]=useState(false);
+    const [addProdName, setAddProdName] = useState(false);
     const openAddProdName = () => setAddProdName(true);
     const [inputProdName, setInputProdName] = useState("");
     const handleProdNameAdd = (event) => {
@@ -58,8 +58,7 @@ export function Category ({selectedCat}) {
     }
     const cancelNewProdName = () => setAddProdName(false);
 
-
-    const [showDeleteModal, setShowDeleteModal]=useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const handleDelete = (id) => {
         MyAxios.delete(`category/delete/${id}`)
         .then(response => {
@@ -70,9 +69,7 @@ export function Category ({selectedCat}) {
         })
     }
 
-
     let arrayForSort = [...selectedCat.products]
-
 
     return (
         <div className='shop-container'>
@@ -135,10 +132,11 @@ export function Category ({selectedCat}) {
                 </Modal.Footer>
             </Modal>
             <div className='category-product-list'>
-            {selectedCat && selectedCat.products &&
+                {selectedCat && selectedCat.products &&
                 selectedCat.products.length !=0 &&
-                arrayForSort.sort((a,b) =>
-                a.product.name.localeCompare(b.product.name))
+                arrayForSort
+                .sort((a,b) =>
+                    a.product.name.localeCompare(b.product.name))
                 .map((prod) =>   
                     <Product key={prod.product.id} selectedProd={prod} selectedCat={selectedCat}/>
                 )}
@@ -173,9 +171,9 @@ export function Category ({selectedCat}) {
                         buttonStyle='btn--dark-rev'
                         buttonSize='btn--medium'
                         onClick={openAddProdName}
-                        style={{slignItem:"center"}}>
-                            Add product <i className="fas fa-plus-circle"></i>
-                        </MyButton>
+                    >
+                        Add product <i className="fas fa-plus-circle"></i>
+                    </MyButton>
                     )
                     }
                 </div>

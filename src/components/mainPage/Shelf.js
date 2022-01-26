@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react'
+import React, { useState }  from 'react'
 import { useParams } from "react-router-dom"
 import MyAxios from '../../utilities/MyAxios'
 import { useSelector, useDispatch } from 'react-redux'
@@ -14,7 +14,7 @@ export function Shelf () {
 
     const dispatch = useDispatch()
 
-    const [editShelfName, setEditShelfName]=useState(false);
+    const [editShelfName, setEditShelfName] = useState(false);
     const openEditShelfName = () => {
         setEditShelfName(true);
         setInputText(selectedShelf.name)
@@ -37,7 +37,7 @@ export function Shelf () {
         })
     }
 
-    const [addCategory, setAddCatName]=useState(false);
+    const [addCategory, setAddCatName] = useState(false);
     const openAddCatName = () => setAddCatName(true);
     const [inputCatName, setInputCatname] = useState("");
     const handleCatNameChange = (event) => {
@@ -64,6 +64,7 @@ export function Shelf () {
             return null
         }
     })
+
     let arrayForSort = [...selectedShelf.categories]
 
     return (
@@ -79,7 +80,8 @@ export function Shelf () {
                                     buttonStyle='btn--primary'
                                     buttonSize='btn--large-icon'
                                     title="Edit name"
-                                    onClick={openEditShelfName}>
+                                    onClick={openEditShelfName}
+                                >
                                     <i className="fas fa-edit"></i>
                                 </MyButton>
                             </div>):
@@ -94,7 +96,8 @@ export function Shelf () {
                                     buttonSize='btn--large-icon'
                                     style={{marginLeft:"5px"}}
                                     onClick={saveShelfName}
-                                    title="Save">
+                                    title="Save"
+                                >
                                     <i className="fas fa-check"></i>
                                 </MyButton>
                                 <MyButton 
@@ -102,7 +105,8 @@ export function Shelf () {
                                     buttonSize='btn--large-icon'
                                     style={{marginLeft:"5px"}}
                                     onClick={cancelShelfName}
-                                    title="Cancel">
+                                    title="Cancel"
+                                >
                                     <i className="fas fa-times"></i>
                                 </MyButton>
                             </div>)
@@ -113,48 +117,51 @@ export function Shelf () {
             <div className='shelf-categories-container'>
                 {selectedShelf && selectedShelf.categories &&
                 selectedShelf.categories.length !=0 &&
-                arrayForSort.sort((a,b) =>
-                a.name.localeCompare(b.name))
+                arrayForSort
+                .sort((a,b) =>
+                    a.name.localeCompare(b.name))
                 .map((cat) =>   
                     <Category key={cat.id} selectedCat={cat} />
                 )}
             </div>
             <div className='add-category'>
                 {addCategory==false ?
-                (<MyButton 
-                buttonStyle='btn--primary'
-                buttonSize='btn--large'
-                onClick={openAddCatName}>
-                    Add category <i className="fas fa-plus-circle"></i>
-                </MyButton>):
-                (<div className='shop-container'>                     
-                    <div className='product-category'>
-                        <input 
-                            type="text" 
-                            style={{height:"1.7rem"}}
-                            onChange={handleCatNameChange}
-                        />
-                        <MyButton 
-                            buttonStyle='btn--dark'
-                            buttonSize='btn--small-icon'
-                            style={{marginLeft:"5px"}}
-                            onClick={saveNewCatName}
-                            title="Save">
-                            <i className="fas fa-check"></i>
-                        </MyButton>
-                        <MyButton 
-                            buttonStyle='btn--dark'
-                            buttonSize='btn--small-icon'
-                            style={{marginLeft:"5px"}}
-                            onClick={cancelNewCatName}
-                            title="Cancel">
-                            <i className="fas fa-times"></i>
-                        </MyButton>
-                    </div>
-                </div>)
+                    (<MyButton 
+                    buttonStyle='btn--primary'
+                    buttonSize='btn--large'
+                    onClick={openAddCatName}
+                    >
+                        Add category <i className="fas fa-plus-circle"></i>
+                    </MyButton>):
+                    (<div className='shop-container'>                     
+                        <div className='product-category'>
+                            <input 
+                                type="text" 
+                                style={{height:"1.7rem"}}
+                                onChange={handleCatNameChange}
+                            />
+                            <MyButton 
+                                buttonStyle='btn--dark'
+                                buttonSize='btn--small-icon'
+                                style={{marginLeft:"5px"}}
+                                onClick={saveNewCatName}
+                                title="Save"
+                            >
+                                <i className="fas fa-check"></i>
+                            </MyButton>
+                            <MyButton 
+                                buttonStyle='btn--dark'
+                                buttonSize='btn--small-icon'
+                                style={{marginLeft:"5px"}}
+                                onClick={cancelNewCatName}
+                                title="Cancel"
+                            >
+                                <i className="fas fa-times"></i>
+                            </MyButton>
+                        </div>
+                    </div>)
                 }
             </div>
         </div>
-            
     )
 }

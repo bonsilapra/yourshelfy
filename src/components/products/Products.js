@@ -1,11 +1,10 @@
 import React from 'react';
-import { MyButton } from './../button/MyButton.js';
+import { connect } from 'react-redux';
 import '../commons/Commons.css';
-import './Products.css';
-import { connect } from 'react-redux'
+import LoginModal from '../commons/LoginModal.js';
 import { RegisterModal } from '../commons/RegisterModal.js';
-import  LoginModal  from '../commons/LoginModal.js';
-
+import { MyButton } from './../button/MyButton.js';
+import './Products.css';
 
 
 class Products extends React.Component {
@@ -47,7 +46,6 @@ class Products extends React.Component {
     showLoginModal () {
         this.setState({showLogin: !this.state.showLogin})
     }
-    
 
     makeProducts (shelves) {
         let products = {}
@@ -91,56 +89,58 @@ class Products extends React.Component {
             <div className="page-container" >
                 <h1>MY PRODUCTS</h1>
                 {this.props.user ?
-                <>
-                    {this.state.products &&
-                    Object.keys(this.state.products)
-                    .sort(function compare (a, b) {
-                        return a.localeCompare(b)
-                    }).map((categoryName) => 
-                        <div key={categoryName} className='products-container'>           
-                            <div className='product-category'>
-                                {categoryName}
-                            </div>
-                            {this.state.products[categoryName].map((item) =>
-                                <div key={item.product.id}  className='category-items'>
-                                    <div className='items'>
-                                        <p>{item.product.name}</p>
-                                    </div>
-                                    <div className='amount'>
-                                        <p><b>{item.amount}</b></p>
-                                        <MyButton 
-                                            buttonStyle='btn--dark-rev'
-                                            buttonSize='btn--small-icon'
-                                            style={{marginLeft:"10px"}}
-                                            title="Add to Shopping list">
-                                            <i className="fas fa-shopping-basket"></i>
-                                        </MyButton>
-                                    </div>
+                    <>
+                        {this.state.products &&
+                        Object.keys(this.state.products)
+                        .sort(function compare (a, b) {
+                            return a.localeCompare(b)
+                        })
+                        .map((categoryName) => 
+                            <div key={categoryName} className='products-container'>           
+                                <div className='product-category'>
+                                    {categoryName}
                                 </div>
-                            )}
-                        </div>
-                    )}
-                </> :
-                <div style={{display:"flex", alignItems:"center"}}>
-                    <MyButton 
-                    style={{margin: "0px", border: "0px"}}
-                    buttonStyle='btn--primary'
-                    onClick={this.showLoginModal}
-                    >
-                        LOG IN
-                    </MyButton>
-                    <p style={{marginBottom: "3px"}}>or</p>
-                    <MyButton 
-                    style={{margin: "0px"}}
-                    buttonStyle='btn--primary'
-                    onClick={this.showRegisterModal}
-                    >
-                        REGISTER
-                    </MyButton>
-                    <p style={{marginBottom: "3px"}}>to add your shelf!</p>
-                    <RegisterModal show={this.state.showRegister} setOpen={this.showRegisterModal}/>
-                    <LoginModal show={this.state.showLogin} setOpen={this.showLoginModal}/>
-                </div>
+                                {this.state.products[categoryName].map((item) =>
+                                    <div key={item.product.id} className='category-items'>
+                                        <div className='items'>
+                                            <p>{item.product.name}</p>
+                                        </div>
+                                        <div className='amount'>
+                                            <p><b>{item.amount}</b></p>
+                                            <MyButton 
+                                                buttonStyle='btn--dark-rev'
+                                                buttonSize='btn--small-icon'
+                                                style={{marginLeft:"10px"}}
+                                                title="Add to Shopping list"
+                                            >
+                                                <i className="fas fa-shopping-basket"></i>
+                                            </MyButton>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </> :
+                    <div style={{display:"flex", alignItems:"center"}}>
+                        <MyButton 
+                            style={{margin: "0px", border: "0px"}}
+                            buttonStyle='btn--primary'
+                            onClick={this.showLoginModal}
+                        >
+                            LOG IN
+                        </MyButton>
+                        <p style={{marginBottom: "3px"}}>or</p>
+                        <MyButton 
+                            style={{margin: "0px"}}
+                            buttonStyle='btn--primary'
+                            onClick={this.showRegisterModal}
+                        >
+                            REGISTER
+                        </MyButton>
+                        <p style={{marginBottom: "3px"}}>to add your shelf!</p>
+                        <RegisterModal show={this.state.showRegister} setOpen={this.showRegisterModal}/>
+                        <LoginModal show={this.state.showLogin} setOpen={this.showLoginModal}/>
+                    </div>
                 }
             </div>
         );

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import '../commons/Commons.css';
 import './ShoppingList.css';
 
-
+//nie używany!
 export class GetListComp extends React.Component {
 
     print() {

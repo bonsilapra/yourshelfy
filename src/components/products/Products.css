@@ -6,6 +6,7 @@
 
 .products-container {
     width: 60vw;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     background-color: var(--secondary-light);

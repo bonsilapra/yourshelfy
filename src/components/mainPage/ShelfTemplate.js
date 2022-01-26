@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MyButton } from './../button/MyButton.js';
-// import Select from 'react-select';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import MyAxios from '../../utilities/MyAxios'
 import './MainPage.css';
 import '../commons/Commons.css';
-
 
 export class ShelfTemplate extends React.Component {
 
@@ -78,8 +76,8 @@ export class ShelfTemplate extends React.Component {
                 <div className='shelf-items' > 
                     {this.props.shelf.categories.length != 0 ?
                         <ul>
-                        {this.props.shelf &&
-                        this.props.shelf.categories
+                            {this.props.shelf &&
+                            this.props.shelf.categories
                             .slice()
                             .sort((a,b) =>
                                 a.name.localeCompare(b.name))
@@ -98,7 +96,7 @@ export class ShelfTemplate extends React.Component {
                                         </div>
                                     </li>
                                 )
-                        )}
+                            )}
                         </ul> :
                         <p style={{textAlign: "center"}}>empty</p>
                     }

@@ -3,7 +3,7 @@
     --primary-light: #E0FFF5;
     --secondary: #2E403A;
     --secondary-light: #CFE8E0;
-    --text: #24010C;
+    --text: #24010c;
 }
 
 .shelves-container {
@@ -29,7 +29,6 @@
 .shelf-categories-container {
     display: flex;
     flex-direction: column;
-    /* min-height: 150px; */
     margin: 0;
     padding: 0;
     background-color: var(--primary-light);
