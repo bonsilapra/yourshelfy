@@ -11,7 +11,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import MainPage from './components/mainPage/MainPage';
 import { Shelf } from './components/mainPage/Shelf';
 import { ShoppingList } from './components/shoppingList/ShoppingList';
-// import { GetListComp } from './components/shoppingList/GetListComp';
+// may be used instead of Modal
+// import GetListComp from './components/shoppingList/GetListComp'; 
 import Products from './components/products/Products';
 import { About } from './components/about/About';
 import configureStore from './app/store';

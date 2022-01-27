@@ -106,6 +106,7 @@ export function ShoppingList() {
                             >
                                 Get the shopping list! <i className="fas fa-list-alt"></i>
                             </MyButton>
+                            {/* <Link className = "link-main" to={"/listComp"}>Get the shopping list! <i className="fas fa-list-alt"></i> </Link> */}
                             <MyButton 
                                 buttonStyle='btn--warn'
                                 buttonSize='btn--large'
@@ -127,7 +128,6 @@ export function ShoppingList() {
                             <Button variant="primary" onClick={()=> {handleClear(); setShowClearModal(false)}}>Yes, clear</Button>
                         </Modal.Footer>
                     </Modal>
-                    {/* <Link className = "link-main" to={"/listComp"}>Get the shopping list! <i className="fas fa-list-alt"></i> </Link> */}
                     <div className='shelf-categories-container'>
                         {selectedShelf && selectedShelf.categories &&
                         selectedShelf.categories.length !=0 &&
