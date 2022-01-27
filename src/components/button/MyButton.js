@@ -5,7 +5,7 @@ const STYLES = [
   'btn--primary', 
   'btn--primary-rev', 
   'btn--outline', 
-  'btn--test', 
+  'btn--warn', 
   'btn--dark', 
   'btn--dark-rev', 
   'btn--light-rev'

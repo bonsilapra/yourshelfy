@@ -57,20 +57,22 @@ class Products extends React.Component {
         let products = {}
         let copy = JSON.parse(JSON.stringify(shelves))
         copy.forEach(shelf => {
-            shelf.categories.forEach(category => {
-                if (products[category.name]) {
-                    category.products.forEach(product => {
-                        let prod = products[category.name].find(element => product.product.id == element.product.id)
-                        if (prod) {
-                            prod.amount += product.amount
-                        } else {
-                            products[category.name].push(product)
-                        }
-                    })
-                } else {
-                    products[category.name] = category.products
-                }
-            })
+            if (shelf.isShoppingList == false) {
+                shelf.categories.forEach(category => {
+                    if (products[category.name]) {
+                        category.products.forEach(product => {
+                            let prod = products[category.name].find(element => product.product.id == element.product.id)
+                            if (prod) {
+                                prod.amount += product.amount
+                            } else {
+                                products[category.name].push(product)
+                            }
+                        })
+                    } else {
+                        products[category.name] = category.products
+                    }
+                })
+            }
         })
         Object.values(products).map((arr) =>
             arr.sort(function compare (a, b) {

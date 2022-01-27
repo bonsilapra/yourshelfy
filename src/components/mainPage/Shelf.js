@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useState, useRef }  from 'react'
 import { useParams } from "react-router-dom"
 import MyAxios from '../../utilities/MyAxios'
 import { useSelector, useDispatch } from 'react-redux'
@@ -11,12 +11,18 @@ import './MainPage.css';
 
 export function Shelf () {
 
+    const catNameAddInput = useRef()
+    const shelfNameChangeInput = useRef()
+
     const dispatch = useDispatch()
 
     const [editShelfName, setEditShelfName] = useState(false);
     const openEditShelfName = () => {
         setEditShelfName(true);
-        setInputText(selectedShelf.name)
+        setInputText(selectedShelf.name);
+        setTimeout(() => {
+            shelfNameChangeInput.current.focus()
+        }, 10);
     }
     const [inputText, setInputText] = useState("");
     const handleShefNameChange = (event) => {
@@ -37,7 +43,12 @@ export function Shelf () {
     }
 
     const [addCategory, setAddCatName] = useState(false);
-    const openAddCatName = () => setAddCatName(true);
+    const openAddCatName = () => {
+        setAddCatName(true);
+        setTimeout(() => {
+            catNameAddInput.current.focus()
+        }, 0);
+    }
     const [inputCatName, setInputCatname] = useState("");
     const handleCatNameChange = (event) => {
         setInputCatname(event.target.value)
@@ -64,6 +75,12 @@ export function Shelf () {
         }
     })
 
+    const handleKeyDown = (event, func) => {
+        if (event.key === 'Enter') {
+            func()
+        }
+    }
+
     let arrayForSort = [...selectedShelf.categories]
 
     return (
@@ -86,9 +103,11 @@ export function Shelf () {
                             </div>):
                             (<div style={{display:"flex", height:"2.8rem"}}>
                                 <input 
+                                    ref={shelfNameChangeInput}
                                     type="text" 
                                     onChange={handleShefNameChange}
                                     value={inputText}
+                                    onKeyDown={(event) => handleKeyDown(event, saveShelfName)}
                                 />
                                 <MyButton 
                                     buttonStyle='btn--primary'
@@ -135,9 +154,11 @@ export function Shelf () {
                     (<div className='shelf-category-container'>                     
                         <div className='product-category'>
                             <input 
+                                ref={catNameAddInput} 
                                 type="text" 
                                 style={{height:"1.7rem"}}
                                 onChange={handleCatNameChange}
+                                onKeyDown={(event) => handleKeyDown(event, saveNewCatName)}
                             />
                             <MyButton 
                                 buttonStyle='btn--dark'

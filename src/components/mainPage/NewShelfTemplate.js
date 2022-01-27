@@ -18,20 +18,28 @@ export class NewShelfTemplate extends React.Component {
         this.setState({shelf:event.target.value});
     }
 
+    handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            this.props.addNewShelf(this.state.shelf);
+        }
+    }
+
     render() {
         return (
             <div className = "shelf-container">
                 <div className='shelf-name'>
                     <input 
+                        autoFocus
                         type="text" 
                         style={{height:"1.7rem"}}
-                        onChange={(event)=>this.handleNewShelfName(event)}
+                        onChange={(event) => this.handleNewShelfName(event)}
+                        onKeyDown={(event) => this.handleKeyDown(event)}
                     />
                     <MyButton 
                         buttonStyle='btn--dark'
                         buttonSize='btn--small-icon'
                         style={{marginLeft:"5px"}}
-                        onClick={()=> { this.props.addNewShelf(this.state.shelf) }}
+                        onClick={() => { this.props.addNewShelf(this.state.shelf) }}
                         title="Save">
                         <i className="fas fa-check"></i>
                     </MyButton>
@@ -39,7 +47,7 @@ export class NewShelfTemplate extends React.Component {
                         buttonStyle='btn--dark'
                         buttonSize='btn--small-icon'
                         style={{marginLeft:"5px"}}
-                        onClick={()=>this.props.setShow(false)}
+                        onClick={() => this.props.setShow(false)}
                         title="Cancel">
                         <i className="fas fa-times"></i>
                     </MyButton>

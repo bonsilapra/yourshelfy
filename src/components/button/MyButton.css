@@ -35,6 +35,12 @@
     transition: all 0.5s ease-out;
   }
 
+  .btn--warn {
+    background-color: var(--primary-light);
+    color: var(--text);
+    border: 3px solid var(--primary-light);
+  }
+
   .btn--dark {
     background-color: var(--secondary);
     color: var(--secondary-light);
@@ -92,6 +98,13 @@
     background: var(--primary-light);
     color: var(--text);
     text-shadow: 0 0 10px var(--primary);
+  }
+
+  .btn--warn:hover {
+    transition: all 0.5s ease-out;
+    background-color: var(--primary-light);
+    color: #b8013b;
+    text-shadow: 0 0 10px #dfb3c1
   }
   
   .btn--dark:hover {

@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useState, useRef }  from 'react'
 import MyAxios from '../../utilities/MyAxios'
 import { useDispatch } from 'react-redux'
 import { deleteProductAction, editProductAction, deltaProduct } from '../../features/shelf/shelfSlice';
@@ -12,12 +12,17 @@ import '../shoppingList/ShoppingList.css';
 
 export function Product ({selectedProd,selectedCat}) {
 
+    const prodNameChangeInput = useRef()
+
     const dispatch = useDispatch()
 
     const [editProdName, setEditProdName] = useState(false);
     const openEditProdName = () => {
         setEditProdName(true);
         setInputProdName(selectedProd.product.name)
+        setTimeout(() => {
+            prodNameChangeInput.current.focus()
+        }, 0);
     }
     const [inputProdName, setInputProdName] = useState("");
     const handleProdNameChange = (event) => {
@@ -62,6 +67,12 @@ export function Product ({selectedProd,selectedCat}) {
         })
     }
 
+    const handleKeyDown = (event, func) => {
+        if (event.key === 'Enter') {
+            func()
+        }
+    }
+
     return (
         <div className='category-items-shelf'>
             {editProdName==false ?
@@ -98,10 +109,12 @@ export function Product ({selectedProd,selectedCat}) {
                 </div>):
                 (<div className='item'>
                     <input 
+                        ref={prodNameChangeInput}
                         type="text" 
                         style={{height:"2rem", marginLeft:"5px"}}
                         onChange={handleProdNameChange}
                         value={inputProdName}
+                        onKeyDown={(event) => handleKeyDown(event, () => saveProdName(selectedCat.id, selectedProd.product.id, inputProdName))}
                     />
                     <MyButton 
                         buttonStyle='btn--dark-rev'
@@ -145,6 +158,7 @@ export function Product ({selectedProd,selectedCat}) {
                     type="number" 
                     style={{width:"50px", marginRight:"10px"}}
                     onChange={handleAmount}
+                    onKeyDown={(event) => handleKeyDown(event, () => handleAmountChange(selectedCat.id, selectedProd.product.id, amount))}
                 />
                 <MyButton 
                     buttonStyle='btn--dark'

@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useState, useRef }  from 'react'
 import MyAxios from '../../utilities/MyAxios';
 // import { Link } from 'react-router-dom'
 import '../commons/Commons.css';
@@ -18,6 +18,8 @@ import '../mainPage/MainPage.css';
 
 export function ShoppingList() {
 
+    const catNameAddInput = useRef()
+
     const selectedShelf = useSelector((state) => {
         if (state.shelf.shelves && state.shelf.shelves.filter((shelf) => shelf.isShoppingList == true)) {
             return state.shelf.shelves.filter((shelf) => shelf.isShoppingList == true)[0]
@@ -31,7 +33,12 @@ export function ShoppingList() {
     const dispatch = useDispatch()
 
     const [addCategory, setAddCatName] = useState(false);
-    const openAddCatName = () => setAddCatName(true);
+    const openAddCatName = () => {
+        setAddCatName(true);
+        setTimeout(() => {
+            catNameAddInput.current.focus()
+        }, 0);
+    }
     const [inputCatName, setInputCatname] = useState("");
     const handleCatNameChange = (event) => {
         setInputCatname(event.target.value)
@@ -65,6 +72,12 @@ export function ShoppingList() {
         }
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            saveNewCatName()
+        }
+    }
+
     const user = useSelector((state) => state.user)
 
     const [showRegister, setRegisterModal] = useState(false);
@@ -94,7 +107,7 @@ export function ShoppingList() {
                                 Get the shopping list! <i className="fas fa-list-alt"></i>
                             </MyButton>
                             <MyButton 
-                                buttonStyle='btn--primary'
+                                buttonStyle='btn--warn'
                                 buttonSize='btn--large'
                                 onClick={() => setShowClearModal(true)}
                             >
@@ -137,9 +150,11 @@ export function ShoppingList() {
                             (<div className='shelf-category-container'>                     
                                 <div className='product-category'>
                                     <input 
+                                        ref={catNameAddInput} 
                                         type="text" 
                                         style={{height:"1.7rem"}}
                                         onChange={handleCatNameChange}
+                                        onKeyDown={handleKeyDown}
                                     />
                                     <MyButton 
                                         buttonStyle='btn--dark'

@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useState, useRef }  from 'react'
 import MyAxios from '../../utilities/MyAxios'
 import { useDispatch } from 'react-redux'
 import { deleteCategoryAction, editCategoryAction, addProductAction } from '../../features/shelf/shelfSlice';
@@ -13,16 +13,22 @@ import '../shoppingList/ShoppingList.css';
 
 export function Category ({selectedCat}) {
 
+    const prodNameAddInput = useRef()
+    const catNameChangeInput = useRef()
+
     const dispatch = useDispatch()
 
     const [editCategory, setEditCatName] = useState(false);
     const openEditCatName = () => {
         setEditCatName(true);
-        setInputCatname(selectedCat.name)
+        setInputCatName(selectedCat.name);
+        setTimeout(() => {
+            catNameChangeInput.current.focus()
+        }, 0);
     }
-    const [inputCatName, setInputCatname] = useState("");
+    const [inputCatName, setInputCatName] = useState("");
     const handleCatNameChange = (event) => {
-        setInputCatname(event.target.value)
+        setInputCatName(event.target.value)
     }
     const saveCatName = (id) => {
         MyAxios.put(`category/rename/${id}`, inputCatName, {
@@ -39,7 +45,12 @@ export function Category ({selectedCat}) {
     const cancelCatName = () => setEditCatName(false);
 
     const [addProdName, setAddProdName] = useState(false);
-    const openAddProdName = () => setAddProdName(true);
+    const openAddProdName = () => {
+        setAddProdName(true);
+        setTimeout(() => {
+            prodNameAddInput.current.focus()
+        }, 0);
+    }
     const [inputProdName, setInputProdName] = useState("");
     const handleProdNameAdd = (event) => {
         setInputProdName(event.target.value)
@@ -67,6 +78,12 @@ export function Category ({selectedCat}) {
         .catch((error) => {
             console.log(error);
         })
+    }
+
+    const handleKeyDown = (event, func) => {
+        if (event.key === 'Enter') {
+            func()
+        }
     }
 
     let arrayForSort = [...selectedCat.products]
@@ -97,10 +114,12 @@ export function Category ({selectedCat}) {
                     </>):
                     (<>
                         <input 
+                            ref = {catNameChangeInput}
                             type="text" 
                             style={{height:"1.7rem"}}
                             onChange={handleCatNameChange}
                             value={inputCatName}
+                            onKeyDown={(event) => handleKeyDown(event, () => saveCatName(selectedCat.id))}
                         />
                         <MyButton 
                             buttonStyle='btn--dark'
@@ -149,9 +168,11 @@ export function Category ({selectedCat}) {
                     (<div className='category-items'>
                         <div className='item'>
                             <input 
+                                ref={prodNameAddInput}
                                 type="text" 
                                 style={{height:"2rem"}}
                                 onChange={handleProdNameAdd}
+                                onKeyDown={(event) => handleKeyDown(event, saveNewProdName)}
                             />
                             <MyButton 
                                 buttonStyle='btn--dark-rev'

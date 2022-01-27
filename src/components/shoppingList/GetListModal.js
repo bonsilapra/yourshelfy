@@ -24,21 +24,25 @@ export class GetListModal extends React.Component {
                             .sort((a,b) =>
                                 a.name.localeCompare(b.name))
                             .map((cat) =>  
-                                <div className='list-container'>                   
-                                    <div key={cat.id} className='product-category'>
-                                        {cat.name}
-                                    </div>
-                                    {cat.products.map((product) =>
-                                        <div key={product.product.id} className='item-category-items'>
-                                            <div className='item-name'>
-                                                <p>{product.product.name}</p>
+                                <>
+                                    {cat.products.length !=0 &&
+                                        <div key={cat.id} className='list-container'>  
+                                            <div  className='product-category'>
+                                                {cat.name}
                                             </div>
-                                            <div className='item-options'>
-                                                <p><b>{product.amount}</b></p>
-                                            </div>
+                                            {cat.products.map((product) =>
+                                                <div key={product.product.id} className='item-category-items'>
+                                                    <div className='item-name'>
+                                                        <p>{product.product.name}</p>
+                                                    </div>
+                                                    <div className='item-options'>
+                                                        <p><b>{product.amount}</b></p>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
-                                    )}
-                                </div>
+                                    }
+                                </>
                             )}
                         </div>
                     </Modal.Body>
