@@ -24,9 +24,9 @@ export class GetListModal extends React.Component {
                             .sort((a,b) =>
                                 a.name.localeCompare(b.name))
                             .map((cat) =>  
-                                <>
+                                <React.Fragment key={cat.id}>
                                     {cat.products.length !=0 &&
-                                        <div key={cat.id} className='list-container'>  
+                                        <div className='list-container'>  
                                             <div  className='product-category'>
                                                 {cat.name}
                                             </div>
@@ -42,7 +42,7 @@ export class GetListModal extends React.Component {
                                             )}
                                         </div>
                                     }
-                                </>
+                                </React.Fragment>
                             )}
                         </div>
                     </Modal.Body>

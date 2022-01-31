@@ -28,7 +28,7 @@ export function ShoppingList() {
         }
     })
 
-    let arrayForSort = [...selectedShelf.categories]
+    let arrayForSort = selectedShelf ? [...selectedShelf.categories] : []
 
     const dispatch = useDispatch()
 
