@@ -22,7 +22,7 @@ export class About extends React.Component {
                     <br />
                     <h4>About me</h4>
                     <p>
-                        My name is Asia and I am learning programming. Having completed my studies in Civil Engineering at the Poznań University of Technology and after working in my profession for several years, I decided to change the industry. This is my second project that I made using the React.js library. This website was created mainly to practice using React Redux. 
+                        My name is Asia and I have been learning programming since October 2021. Having completed my studies in Civil Engineering at the Poznań University of Technology and after working in my profession for several years, I decided to change the industry. This is my second project that I made using the React.js library. This website was created mainly to practice using React Redux. 
                     </p>
                     <br />
                     <p>
