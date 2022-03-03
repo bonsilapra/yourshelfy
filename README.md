@@ -5,6 +5,7 @@ An app to keep order. I decided to create this application to keep up-to-date in
 ## Live demo
 
 [Yourshelfy](http://joanna-falkowska.pl/yourshelfy/)
+[Backend](https://github.com/Qbixer/yourshelfy-backend) by Qbixer
 
 ## Technology stack and tools:
 
