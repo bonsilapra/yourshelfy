@@ -1,3 +1,27 @@
+# About
+
+An app to keep order. I decided to create this application to keep up-to-date information on the amount of food products in the apartment and the basement. It helps me prevent food waste, but it can also be used for any other purposes. While creating this application, I learned how to use React Redux.
+
+## Live demo
+
+[Yourshelfy](http://joanna-falkowska.pl/yourshelfy/)
+
+## Technology stack and tools:
+
+- React.js
+- JavaScript
+- HTML
+- CSS
+- React Redux
+- axios
+- bootstrap
+- react-bootstrap
+- react-dom
+- react-router-dom
+- react-select
+- redux-persist
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
